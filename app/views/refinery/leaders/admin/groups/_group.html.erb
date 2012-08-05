@@ -1,0 +1,20 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(group) -%>">
+  <span class='title'>
+    <%= group.name %>
+  </span>
+  <span class="preview">
+      has <%= group.users.count %> users
+    </span>
+  <span class='actions'>
+    
+    <%= link_to refinery_icon_tag("delete.png"), refinery.groups_admin_group_path(group),
+        :class => "cancel confirm-delete delete_group",
+        :title => t('.delete'),
+        :data => {:confirm => t('message', :scope => 'refinery.admin.delete', :title => group.name)},
+        :method => :delete unless(group.name == "guest" || !current_refinery_user.has_role?("Refinery"))%>
+    <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_groups_admin_group_path(group),
+         :title => t('.edit') if current_refinery_user.has_role?("Refinery") %>
+    <%= link_to refinery_icon_tag("application_go.png"), refinery.groups_admin_group_path(group),
+      :title => t('.view_live_html'), :class => "show_group" %>
+  </span>
+</li>

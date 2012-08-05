@@ -1,0 +1,11 @@
+<div id="records">
+  <h2>
+    <%= @group.name %>
+  </h2>
+  <span id="group_users_count">
+    <%= @group.users.count %>
+  </span>
+
+  <%= render "users", :selecting => false %>
+</div>
+<%= yield :actions %>

@@ -1,0 +1,64 @@
+
+<% content_for :actions do %>
+  <section id="actions">
+    <ul>
+      <li>
+        <%= link_to t('add_user', :scope => 'refinery.groups.admin.groups.group'), refinery.new_groups_admin_group_user_path(@group), :id => "add_user" %>
+      </li>
+      <% unless(@group.name == "guest" || !current_refinery_user.has_role?("Refinery")) %>
+      <li>
+        <%= link_to t('delete', :scope => 'refinery.groups.admin.groups.group'), refinery.groups_admin_group_path(@group), :id => "delete_group", :data => {:confirm => t('message', :scope => 'refinery.groups.admin.delete', :title => @group.name)},
+        :method => :delete %>
+      </li>
+      <li>
+        <%= link_to t('edit', :scope => 'refinery.groups.admin.groups.group'), refinery.edit_groups_admin_group_path(@group), :title => t('.edit'), :id => "edit_group" %>
+      </li>
+      <% end %>
+    </ul>
+    <div>
+    </div>
+  </section>
+<% end %>
+<div class="clearfix"></div>
+<%= form_tag refinery.add_users_groups_admin_group_path(@group) do %>
+<div class='pagination_container'>
+  <%= will_paginate @users %>
+    <ul >
+      <% @users.each do |user| %>
+        <li id="sortable_<%= user.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+          <span class='title'>
+            <strong><%= user.username %></strong>
+            <span class="preview">
+              <%= t('.preview', :who => user.email, :created_at => l(user.created_at, :format => :short)) %>
+            </span>
+            <%= content_tag("span", "admin", :class => "group_admin") if user.has_role?("GroupAdmin") %>
+            <%= link_to "set as admin", "#{refinery.set_admin_groups_admin_group_path(@group)}?user_id=#{user.id}" if !user.has_role?("GroupAdmin") %>
+          </span>
+          <span class='actions'>
+            <% if selecting %>
+                <%= check_box_tag "user_ids[]", user.id %>
+            <% else %>
+              <%= mail_to user.email, refinery_icon_tag('email_go.png'),
+                        :title => t('.email_user') %>
+              <%= link_to refinery_icon_tag('application_edit.png'),
+                          refinery.edit_groups_admin_group_user_path(@group, user),
+                          :class => "edit_user",
+                          :title => t('edit', :scope => 'refinery.groups.admin.users') %>
+              <%= link_to refinery_icon_tag('delete.png'),
+                          refinery.groups_admin_group_user_path(@group, user),
+                          :class => "cancel confirm-delete delete_user",
+                          :title => t('delete', :scope => 'refinery.groups.admin.users'),
+                          :method => :delete,
+                          :data => {
+                            :confirm => t('message', :scope => 'refinery.admin.delete', :title => user.username) 
+                          } if current_refinery_user.can_delete?(user) %>
+            <% end %>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+    <% if selecting %>
+      <input type="submit" value="Save" >
+    <% end %>
+  <% end %>
+</div>
