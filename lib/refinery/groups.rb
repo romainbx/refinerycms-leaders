@@ -1,10 +1,10 @@
 require 'refinerycms-core'
 
 module Refinery
-  autoload :GroupsGenerator, 'generators/refinery/groups_generator'
+  autoload :LeadersGenerator, 'generators/refinery/leaders_generator'
 
-  module Groups
-    require 'refinery/groups/engine'
+  module Leaders
+    require 'refinery/leaders/engine'
 
     class << self
       attr_writer :root

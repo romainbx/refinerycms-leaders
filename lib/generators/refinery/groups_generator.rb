@@ -1,8 +1,8 @@
 module Refinery
-  class GroupsGenerator < Rails::Generators::Base
+  class LeadersGenerator < Rails::Generators::Base
 
     def rake_db
-      rake("refinery_groups:install:migrations")
+      rake("refinery_leaders:install:migrations")
     end
 
     def append_load_seed_data
@@ -10,8 +10,8 @@ module Refinery
       append_file 'db/seeds.rb', :verbose => true do
         <<-EOH
 
-          # Added by Refinery CMS Groups extension
-          Refinery::Groups::Engine.load_seed
+          # Added by Refinery CMS Leaders extension
+          Refinery::Leaders::Engine.load_seed
         EOH
       end
     end

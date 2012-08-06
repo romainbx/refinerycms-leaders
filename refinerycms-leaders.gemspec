@@ -4,9 +4,9 @@ Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-leaders'
   s.version           = '1.0'
-  s.description       = 'Ruby on Rails Groups extension for Refinery CMS'
+  s.description       = 'Ruby on Rails Leaders extension for Refinery CMS'
   s.date              = '2012-07-05'
-  s.summary           = 'Groups extension for Refinery CMS'
+  s.summary           = 'Leaders extension for Refinery CMS'
   s.require_paths     = %w(lib)
   s.files             = Dir["{app,config,db,lib}/**/*"] + ["readme.md"]
 

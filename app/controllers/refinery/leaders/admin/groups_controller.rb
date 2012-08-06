@@ -3,7 +3,7 @@ module Refinery
     module Admin
       class GroupsController < ::Refinery::AdminController
 
-        crudify :'refinery/groups/group', :title_attribute => 'name', :xhr_paging => true
+        crudify :'refinery/leaders/group', :title_attribute => 'name', :xhr_paging => true
         before_filter :find_current_group, :only => [:show, :edit]
         before_filter :check_current_user_role, :only => [:show, :edit, :destroy]
         before_filter :check_before_destroy, :only => :destroy
@@ -20,7 +20,7 @@ module Refinery
         def show
           @persons = @group.persons.paginate(:page => params[:page])
         end
-        
+
         def edit
           @persons = @group.persons.paginate(:page => params[:page])
         end

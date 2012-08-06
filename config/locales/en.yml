@@ -1,9 +1,9 @@
 en:
   refinery:
     plugins:
-      groups:
-        title: Groups
-    groups:
+      leaders:
+        title: Leaders
+    leaders:
       admin:
         groups:
           actions:
@@ -24,5 +24,5 @@ en:
           other: Other Groups
   activerecord:
     attributes:
-      'refinery/groups/group':
+      'refinery/leaders/group':
         name: Name
