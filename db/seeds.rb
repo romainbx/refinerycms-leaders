@@ -1,6 +1,6 @@
 Refinery::I18n.frontend_locales.each do |lang|
   I18n.locale = lang
-  
+
   if defined?(Refinery::User)
     Refinery::User.all.each do |user|
       if user.plugins.where(:name => 'refinerycms-leaders').blank?
@@ -10,7 +10,7 @@ Refinery::I18n.frontend_locales.each do |lang|
     end
   end
 
-  url = "/groups"
+  url = "/leaders"
   if defined?(Refinery::Page) && Refinery::Page.where(:link_url => url).empty?
     page = Refinery::Page.create(
       :title => 'Leaders',
