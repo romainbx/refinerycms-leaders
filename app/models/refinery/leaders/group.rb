@@ -7,7 +7,7 @@ module Refinery
 
       validates :name, :presence => true, :uniqueness => true
 
-      has_many :persons, :class_name => "Refinery::Leaders::Person"
+      has_and_belongs_to_many :persons, :class_name => "Refinery::Leaders::Person"
 
       acts_as_indexed :fields => [:name]
 

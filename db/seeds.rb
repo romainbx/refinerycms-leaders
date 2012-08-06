@@ -3,8 +3,8 @@ Refinery::I18n.frontend_locales.each do |lang|
   
   if defined?(Refinery::User)
     Refinery::User.all.each do |user|
-      if user.plugins.where(:name => 'refinerycms-groups').blank?
-        user.plugins.create(:name => 'refinerycms-groups',
+      if user.plugins.where(:name => 'refinerycms-leaders').blank?
+        user.plugins.create(:name => 'refinerycms-leaders',
                             :position => (user.plugins.maximum(:position) || -1) +1)
       end
     end
@@ -13,7 +13,7 @@ Refinery::I18n.frontend_locales.each do |lang|
   url = "/groups"
   if defined?(Refinery::Page) && Refinery::Page.where(:link_url => url).empty?
     page = Refinery::Page.create(
-      :title => 'Groups',
+      :title => 'Leaders',
       :link_url => url,
       :deletable => false,
       :menu_match => "^#{url}(\/|\/.+?|)$"
