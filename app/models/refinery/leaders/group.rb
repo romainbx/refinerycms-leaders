@@ -3,26 +3,16 @@ module Refinery
     class Group < Refinery::Core::BaseModel
       self.table_name = 'refinery_leaders_groups'
 
-      attr_accessible :name, :position
+      attr_accessible :name
 
-      validates :name, :presence => true, :uniqueness => true
+      belongs_to :group, :class_name => 'Refinery::Leaders::Group', :foreign_key => :group_id
+      attr_accessible :group_id
 
-      has_and_belongs_to_many :persons, :class_name => "Refinery::Leaders::Person"
+      validates :name, :presence => true
 
+      has_and_belongs_to_many :individuals, :class_name => "Refinery::Leaders::Individual", :join_table => 'refinery_leaders_groups_individuals'
+      attr_accessible :individuals
       acts_as_indexed :fields => [:name]
-
-      def add_persons person
-        persons << person
-      end
-
-      def add_persons many_persons
-        many_persons.each do |person|
-          add_person person
-        end
-      end
-
-      def remove_person person
-        persons.delete person
-      end
+    end
   end
 end

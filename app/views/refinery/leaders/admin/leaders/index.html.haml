@@ -1,0 +1,22 @@
+%div
+  %h1
+    Leaders
+
+%div
+  = link_to 'Individuals', '/refinery/individuals'
+%div
+  - @individuals.each do |individual|
+    = link_to refinery.edit_leaders_admin_individual_path(individual) do
+      %div{:style=>'float:left;width:120px;text-align:center;'}
+        = image_fu individual.image, Refinery::Images.user_image_sizes["small".to_sym]
+        %div{:style=>''}
+          = individual.name
+          %br
+          = individual.name_chinese
+.clearfix
+%div{:style=>'margin-top:20px'}
+  = link_to 'Groups', '/refinery/groups'
+%div
+  - @groups.each do |group|
+    %div
+      = link_to group.name, refinery.edit_leaders_admin_group_path(group)

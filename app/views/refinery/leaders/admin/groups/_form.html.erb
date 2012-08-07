@@ -1,17 +1,19 @@
-<%= form_for [refinery, :groups_admin, @group] do |f| -%>
+<%= form_for [refinery, :leaders_admin, @group] do |f| -%>
   <%= render '/refinery/admin/error_messages',
               :object => @group,
               :include_object_name => true %>
 
-  
+
   <div class='field'>
     <%= f.label :name -%>
     <%= f.text_field :name, :class => 'larger widest'  -%>
-
   </div>
-  
+
+  <%= f.hidden_field :individuals, :value => @group.individual_ids.join(",") %>
+  <%= render "individuals" %>
+
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
-             :delete_title => t('delete', :scope => 'refinery.groups.admin.groups.group'),
+             :delete_title => t('delete', :scope => 'refinery.leaders.admin.leaders.group'),
              :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @group.name) %>
 <% end -%>

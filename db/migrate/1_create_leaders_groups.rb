@@ -3,10 +3,10 @@ class CreateLeadersGroups < ActiveRecord::Migration
   def up
     create_table :refinery_leaders_groups do |t|
       t.string :name
-
+      t.integer :group_id
       t.timestamps
     end
-
+    add_index :refinery_leaders_groups, :group_id
   end
 
   def down

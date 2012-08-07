@@ -1,0 +1,42 @@
+<div class='field group_body'>
+  <%= label_tag :body, t('.body') -%>
+  <%= will_paginate @individuals, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+  <ul>
+    <% @individuals.each do |individual| %>
+      <li>
+      <%= check_box_tag "posts_campaign_post_item", individual.id, @group.individuals.include?(individual.id.to_s), :id => "individual_#{individual.id}" %>
+        <%= individual.name %>
+      </li>
+    <% end %>
+  </ul>
+  <script>
+    vals = $("input#group_individuals").attr("value");
+    if(vals.length > 0){
+      vals_arr = vals.split(",");
+      $("input[name='posts_campaign_post_item']").each(function(){
+        if(vals_arr.indexOf($(this).attr("value")) != -1){
+          $(this).attr("checked", "checked");
+        }
+      });
+    }
+    function addOrRemovePost(id, addOrRemove){
+      val = $("input#group_individuals").attr("value");
+      val_arr = []
+      if(val.length > 0){
+        val_arr = val.split(",");
+      }
+      if(addOrRemove){
+        val_arr.push(id);
+      }else{
+        val_arr.splice(val_arr.indexOf(id), 1)
+      }
+      $("input#group_individuals").attr("value", val_arr.join());
+      console.log($("input#group_individuals"))
+    }
+
+    $('.pagination a').attr('data-remote', 'true');
+    $("input[name='posts_campaign_post_item']").click(function(){
+      addOrRemovePost($(this).attr("value"), $(this).is(':checked'))
+    });
+  </script>
+</div>

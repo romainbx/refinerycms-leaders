@@ -1,0 +1,39 @@
+<%= form_for [refinery, :leaders_admin, @individual] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @individual,
+              :include_object_name => true %>
+<div style="margin-bottom:30px;display:inline-block;">
+<div style="width:220px;padding-top:10px;float:left;">
+ <div class='field'>
+    <%= render :partial => '/refinery/admin/image_picker', :locals =>
+    {
+     :f => f,
+     :field => :image_id,
+     :image => f.object.image,
+     :toggle_image_display => false
+     } %>
+  </div>
+</div>
+<div style="float:left;">
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :name_chinese -%>
+    <%= f.text_field :name_chinese-%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :biography -%>
+    <%= f.text_area :biography, :rows => 10, :cols => 90 -%>
+  </div>
+</div>
+</div>
+<div style="clear:both;">
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.leaders.admin.leaders.individual'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @individual.name) %>
+<% end -%>

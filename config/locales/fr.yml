@@ -1,6 +1,8 @@
 fr:
   refinery:
     plugins:
+      leaders:
+        title: Répertoire des dirigeants
       groups:
         title: Groups
     groups:

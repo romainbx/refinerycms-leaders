@@ -2,7 +2,7 @@ en:
   refinery:
     plugins:
       leaders:
-        title: Leaders
+        title: Directory of leaders
     leaders:
       admin:
         groups:

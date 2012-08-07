@@ -72,5 +72,3 @@ group :assets do
 end
 
 gem 'jquery-rails', '~> 2.0.0'
-
-gem 'refinerycms-leaders', :git => 'git@github.com:romainbx/refinerycms-leaders.git'

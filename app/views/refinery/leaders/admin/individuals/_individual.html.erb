@@ -1,0 +1,18 @@
+<li id="sortable_<%= individual.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <strong><%= individual.name %></strong>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('application_edit.png'),
+                refinery.edit_leaders_admin_individual_path(individual),
+                :title => t('edit', :scope => 'refinery.admin.users') if current_refinery_user.can_edit?(individual) %>
+    <%= link_to refinery_icon_tag('delete.png'),
+              refinery.leaders_admin_individual_path(individual),
+              :class => "cancel confirm-delete",
+              :title => t('delete', :scope => 'refinery.admin.users'),
+              :method => :delete,
+              :data => {
+                :confirm => t('message', :scope => 'refinery.admin.delete', :title => individual.name)
+              } %>
+  </span>
+</li>
