@@ -1,16 +1,11 @@
-class CreateLeadersGroups < ActiveRecord::Migration
+class CreateLeadersPowers < ActiveRecord::Migration
 
   def up
-    create_table :refinery_leaders_groups do |t|
+    create_table :refinery_leaders_powers do |t|
       t.string :name
-      t.string :name_english
-      t.string :name_chinese
-      t.integer :group_id
-      t.integer :power_id
+      t.string :color
       t.timestamps
     end
-    add_index :refinery_leaders_groups, :group_id
-    add_index :refinery_leaders_groups, :power_id
   end
 
   def down

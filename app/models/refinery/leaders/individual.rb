@@ -8,7 +8,7 @@ module Refinery
 
       validates :name, :presence => true
 
-      has_and_belongs_to_many :groups, :class_name => "Refinery::Leaders::Group"
+      has_and_belongs_to_many :groups, :class_name => "Refinery::Leaders::Group", :join_table => 'refinery_leaders_groups_individuals'
 
       acts_as_indexed :fields => [:name]
     end

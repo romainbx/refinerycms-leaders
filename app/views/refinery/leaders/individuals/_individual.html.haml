@@ -1,0 +1,10 @@
+.individual{:style=>'width:120px;text-align:center;display:inline-block;'}
+  = link_to refinery.leaders_individual_path(individual) do
+    = image_fu individual.image, Refinery::Images.user_image_sizes["small".to_sym]
+  %div{:style=>'text-align:center;margin-top:5px;'}
+    - individual.groups.each do |group|
+      %div{:style=>'display:inline-block;width:10px;border-radius:5px;height:10px;background:'+group.power.color}
+  %div
+    = link_to individual.name, refinery.leaders_individual_path(individual)
+    %br
+    = link_to individual.name_chinese, refinery.leaders_individual_path(individual)

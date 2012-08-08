@@ -8,7 +8,7 @@ class CreateLeadersIndividuals < ActiveRecord::Migration
       t.integer :image_id
       t.timestamps
     end
-
+    add_index :refinery_leaders_individuals, :image_id
   end
 
   def down

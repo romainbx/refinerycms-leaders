@@ -6,9 +6,20 @@
 
   <div class='field'>
     <%= f.label :name -%>
-    <%= f.text_field :name, :class => 'larger widest'  -%>
+    <%= f.text_field :name -%>
   </div>
-
+  <div class='field'>
+    <%= f.label :name_english -%>
+    <%= f.text_field :name_english  -%>
+  </div>
+  <div class='field'>
+    <%= f.label :name_chinese -%>
+    <%= f.text_field :name_chinese  -%>
+  </div>
+  <div class='field'>
+    <%= f.label :power -%>
+    <%= select_tag 'power_id', options_from_collection_for_select(Refinery::Leaders::Power.all, 'id', 'name'), :include_blank => true %>
+  </div>
   <%= f.hidden_field :individuals, :value => @group.individual_ids.join(",") %>
   <%= render "individuals" %>
 

@@ -11,6 +11,8 @@ Refinery::Core::Engine.routes.draw do
 
   namespace :leaders, :path => 'leaders' do
     resources :groups, :only => [:index, :show]
+    resources :individuals, :only => [:index, :show]
+    resources :powers, :only => [:show]
   end
 
   # Admin routes
@@ -23,6 +25,7 @@ Refinery::Core::Engine.routes.draw do
         end
       end
       resources :individuals
+      resources :powers
     end
   end
 

@@ -28,6 +28,7 @@ module Refinery
         def create
           group = Refinery::Leaders::Group.new
           group.name = params[:group][:name]
+          group.power_id = params[:power_id]
           ids = params[:group][:individuals].split(',')
           group.individuals = Refinery::Leaders::Individual.find(ids)
           group.save!
@@ -36,8 +37,13 @@ module Refinery
 
         def update
           group = Refinery::Leaders::Group.find(params[:id])
+          group.name = params[:group][:name]
+          group.name_english = params[:group][:name_english]
+          group.name_chinese = params[:group][:name_chinese]
+          group.power_id = params[:power_id]
           ids = params[:group][:individuals].split(',')
           group.individuals = Refinery::Leaders::Individual.find(ids)
+          group.save
           redirect_to refinery.leaders_admin_groups_path
         end
 

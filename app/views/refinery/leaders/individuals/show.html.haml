@@ -1,0 +1,27 @@
+.row
+  .span12
+    = render 'refinery/leaders/shared/menu'
+    .individual
+      .row
+        .span3
+          .photo
+            = image_fu @individual.image, Refinery::Images.user_image_sizes["medium".to_sym]
+        .span9
+          .name
+            = @individual.name
+          .name_chinese
+            = @individual.name_chinese
+          .biography
+            = raw @individual.biography
+          %div{:style=>'margin-bottom:10px;font-weight:bold;'}
+            Postes
+          - @individual.groups.each do |group|
+            %div{:style=>'height:20px;margin-bottom:2px;'}
+              - if group.power && group.power.color
+                %div{:style=>'float:left;margin-right:5px;margin-top:4px;border-radius:5px;width:10px;height:10px;background:'+group.power.color}
+              %i.icon-th
+              = link_to group.name, refinery.leaders_group_path(group)
+              %i
+                (
+                = group.power.name
+                )

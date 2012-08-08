@@ -1,0 +1,19 @@
+<%= form_for [refinery, :leaders_admin, @power] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @power,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name -%>
+  </div>
+  <div class='field'>
+    <%= f.label :color -%>
+    <%= f.text_field :color -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.leaders.admin.leaders.power'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @power.name) %>
+<% end -%>

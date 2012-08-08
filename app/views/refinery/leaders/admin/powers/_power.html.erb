@@ -1,0 +1,18 @@
+<li id="sortable_<%= power.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <strong><%= power.name %></strong>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('delete.png'),
+              refinery.leaders_admin_power_path(power),
+              :class => "cancel confirm-delete",
+              :title => t('delete', :scope => 'refinery.admin.users'),
+              :method => :delete,
+              :data => {
+                :confirm => t('message', :scope => 'refinery.admin.delete', :title => power.name)
+              } %>
+    <%= link_to refinery_icon_tag('application_edit.png'),
+                refinery.edit_leaders_admin_power_path(power),
+                :title => t('edit', :scope => 'refinery.admin.users') if current_refinery_user.can_edit?(power) %>
+  </span>
+</li>

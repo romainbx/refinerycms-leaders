@@ -1,0 +1,7 @@
+<section id='records'>
+<%= will_paginate @powers if Refinery::Leaders::Admin::PowersController.pageable? %>
+<%= render 'sortable_list' %>
+</section>
+<aside id='actions'>
+  <%= render 'actions' %>
+</aside>

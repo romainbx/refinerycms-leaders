@@ -1,0 +1,5 @@
+- @groups.each do |group|
+  %div
+    = group.name
+  - group.individuals.each do |individual|
+    = render :partial => 'refinery/leaders/individuals/individual', :locals => { :individual => individual }
