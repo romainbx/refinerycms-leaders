@@ -3,6 +3,7 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-leaders'
+  s.authors           = ['Romain Binaux']
   s.version           = '1.0'
   s.description       = 'Ruby on Rails Leaders extension for Refinery CMS'
   s.date              = '2012-07-05'
