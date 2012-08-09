@@ -20,6 +20,12 @@
     <%= f.label :power -%>
     <%= select_tag 'power_id', options_from_collection_for_select(Refinery::Leaders::Power.all, 'id', 'name'), :include_blank => true %>
   </div>
+
+  <div class='field'>
+    <%= f.label :description -%>
+    <%= f.text_area :description, :rows => 10, :cols => 90 -%>
+  </div>
+
   <%= f.hidden_field :individuals, :value => @group.individual_ids.join(",") %>
   <%= render "individuals" %>
 

@@ -28,6 +28,7 @@ module Refinery
         def create
           group = Refinery::Leaders::Group.new
           group.name = params[:group][:name]
+          group.description = params[:group][:description]
           group.power_id = params[:power_id]
           ids = params[:group][:individuals].split(',')
           group.individuals = Refinery::Leaders::Individual.find(ids)
@@ -38,6 +39,7 @@ module Refinery
         def update
           group = Refinery::Leaders::Group.find(params[:id])
           group.name = params[:group][:name]
+          group.description = params[:group][:description]
           group.name_english = params[:group][:name_english]
           group.name_chinese = params[:group][:name_chinese]
           group.power_id = params[:power_id]

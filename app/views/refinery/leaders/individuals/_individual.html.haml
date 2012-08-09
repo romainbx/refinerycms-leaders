@@ -5,6 +5,7 @@
     - individual.groups.each do |group|
       %div{:style=>'display:inline-block;width:10px;border-radius:5px;height:10px;background:'+group.power.color}
   %div
+    %i.icon-user
     = link_to individual.name, refinery.leaders_individual_path(individual)
     %br
     = link_to individual.name_chinese, refinery.leaders_individual_path(individual)

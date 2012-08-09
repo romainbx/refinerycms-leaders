@@ -4,7 +4,8 @@ module Refinery
       class LeadersController < ::Refinery::AdminController
 
         def index
-          @groups = Refinery::Leaders::Group.order("created_at DESC").limit(10)
+          @powers = Refinery::Leaders::Power.order("name ASC").limit(10)
+          @groups = Refinery::Leaders::Group.order("name ASC").limit(10)
           @individuals = Refinery::Leaders::Individual.order("created_at DESC").limit(10)
         end
 

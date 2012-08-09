@@ -7,6 +7,7 @@ class CreateLeadersGroups < ActiveRecord::Migration
       t.string :name_chinese
       t.integer :group_id
       t.integer :power_id
+      t.text :description
       t.timestamps
     end
     add_index :refinery_leaders_groups, :group_id

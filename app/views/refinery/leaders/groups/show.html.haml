@@ -1,32 +1,33 @@
 .row
   .span12
     = render 'refinery/leaders/shared/menu'
+    .directory-content
+      .row
+        .span3
+          %div{:style=>'padding-left:20px;'}
+            %div{:style=>'text-transform:uppercase;font-weight:bold;'}
+              %div{:style=>'box-shadow:0px 1px 1px #FFF;display:inline-block;width:10px;border-radius:10px;height:10px;background:'+@group.power.color}
+              = @group.power.name
 
-    .row
-      .span3
-        %div{:style=>'padding-left:10px'}
-          %div{:style=>'text-transform:uppercase;font-weight:bold;'}
-            %div{:style=>'box-shadow:0px 1px 1px #FFF;display:inline-block;width:10px;border-radius:10px;height:10px;background:'+@group.power.color}
-            = @group.power.name
-
-          %div{:style=>'margin-left:15px;margin-top:10px;'}
-            %i.icon-download-alt
-            %a{:href=>''}
-              Organigrammes
-          - groups = Refinery::Leaders::Group.where(:power_id => @group.power.id)
-          - groups.each do |group|
             %div{:style=>'margin-left:15px;margin-top:10px;'}
-              %i.icon-th
-              = link_to group.name, refinery.leaders_group_path(group)
-      .span9
-        %div{:style=>'margin-left:auto;margin-right:auto;max-width:500px;text-align:center;'}
-          %div{:style=>'font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}
-            = @group.name
-          %div{:style=>'color:#888;font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}
-            = raw @group.name_english
-          %div{:style=>'color:#888;font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}
-            = raw @group.name_chinese
+              %i.icon-download-alt
+              = link_to 'Organigrammes', '/leaders/powers/'+@group.power.id.to_s+'/organigramme/'
+            - groups = Refinery::Leaders::Group.where(:power_id => @group.power.id)
+            - groups.each do |group|
+              %div{:style=>'margin-left:15px;margin-top:10px;'}
+                %i.icon-th
+                = link_to group.name, refinery.leaders_group_path(group)
+        .span9
+          %div{:style=>'margin-left:auto;margin-right:auto;max-width:500px;text-align:center;'}
+            %div{:style=>'font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}
+              = @group.name
+            %div{:style=>'color:#888;font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}
+              = raw @group.name_english
+            %div{:style=>'color:#888;font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}
+              = raw @group.name_chinese
 
-        .group{:style=>'margin-top:20px;'}
-          - @group.individuals.each do |individual|
-            = render :partial => 'refinery/leaders/individuals/individual', :locals => { :individual => individual }
+          = raw @group.description
+
+          .group{:style=>'margin-top:20px;'}
+            - @group.individuals.each do |individual|
+              = render :partial => 'refinery/leaders/individuals/individual', :locals => { :individual => individual }

@@ -13,10 +13,12 @@ Refinery::Core::Engine.routes.draw do
     resources :groups, :only => [:index, :show]
     resources :individuals, :only => [:index, :show]
     resources :powers, :only => [:show]
+
+    match 'powers/:id/organigramme' => 'powers#organigramme'
   end
 
-  # Admin routes
   namespace :leaders, :path => '' do
+    resources :leaders, :only => [:index]
     namespace :admin, :path => 'refinery' do
       resources :leaders
       resources :groups do

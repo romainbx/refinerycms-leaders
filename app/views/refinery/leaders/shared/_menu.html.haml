@@ -1,0 +1,7 @@
+- powers = Refinery::Leaders::Power.all
+%div{:style => 'margin-bottom:0px;background:#BBB;box-shadow:0 -1px 0 #AAA;padding:10px 5px 0;border-radius:5px 5px 0 0;text-align:center;background:url("/assets/grey_top_background.jpg")'}
+  - powers.each do |power|
+    = link_to refinery.leaders_power_path(power), :class=>'no_deco' do
+      .button_orga_little{:style=>'background:'+power.color}
+        %div
+          = power.short_name ||= power.name

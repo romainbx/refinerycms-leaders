@@ -6,6 +6,11 @@ module Refinery
         @power = Refinery::Leaders::Power.find(params[:id])
         @groups = Refinery::Leaders::Group.where(:power_id => params[:id])
       end
+
+      def organigramme
+        @power = Refinery::Leaders::Power.find(params[:id])
+        @groups = Refinery::Leaders::Group.where(:power_id => params[:id])
+      end
     end
   end
 end
