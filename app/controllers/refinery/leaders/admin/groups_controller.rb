@@ -4,7 +4,7 @@ module Refinery
       class GroupsController < ::Refinery::AdminController
 
         crudify :'refinery/leaders/group', :title_attribute => 'name', :xhr_paging => true
-        before_filter :find_current_group, :only => [:show, :edit]
+        before_filter :find_current_group, :only => [:show, :edit, :edit_roles]
         before_filter :check_current_user_role, :only => [:show, :edit, :destroy]
         before_filter :check_before_destroy, :only => :destroy
         before_filter :check_before_edit, :only => :edit
@@ -46,6 +46,18 @@ module Refinery
           ids = params[:group][:individuals].split(',')
           group.individuals = Refinery::Leaders::Individual.find(ids)
           group.save
+
+          redirect_to refinery.leaders_admin_groups_path
+        end
+
+        def edit_roles
+        end
+
+        def update_roles
+          @group = Refinery::Leaders::Group.find(params[:id])
+          @group.group_individuals.each do |gi|
+            gi.update_attributes(:role => params[gi.individual_id.to_s+"_role"])
+          end
           redirect_to refinery.leaders_admin_groups_path
         end
 
@@ -60,7 +72,7 @@ module Refinery
       private
 
         def find_individuals
-          @individuals = Refinery::Leaders::Individual.paginate(:page => params[:page])
+          @individuals = Refinery::Leaders::Individual.order("name ASC").paginate(:page => params[:page])
         end
 
         def find_current_group

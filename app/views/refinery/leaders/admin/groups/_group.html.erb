@@ -17,7 +17,7 @@
         :method => :delete unless(group.name == "guest" || !current_refinery_user.has_role?("Refinery"))%>
     <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_leaders_admin_group_path(group),
          :title => t('.edit') if current_refinery_user.has_role?("Refinery") %>
-    <%= link_to refinery_icon_tag("application_go.png"), refinery.leaders_admin_group_path(group),
+    <%= link_to refinery_icon_tag("application_go.png"), refinery.edit_roles_leaders_admin_group_path(group),
       :title => t('.view_live_html'), :class => "show_group" %>
   </span>
 </li>

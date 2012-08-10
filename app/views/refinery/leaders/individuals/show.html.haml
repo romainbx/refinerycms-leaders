@@ -15,12 +15,15 @@
             = raw @individual.biography
           %div{:style=>'margin-bottom:10px;font-weight:bold;'}
             Postes
-          - @individual.groups.each do |group|
+          - @individual.group_individuals.each do |gi|
+            - group = gi.group
             %div{:style=>'height:20px;margin-bottom:2px;'}
               - if group.power && group.power.color
                 %div{:style=>'float:left;margin-right:5px;margin-top:4px;border-radius:5px;width:10px;height:10px;background:'+group.power.color}
               %i.icon-th
-              = link_to group.name, refinery.leaders_group_path(group)
+              - title = group.name
+              - title = gi.role+", "+title if !gi.role.empty?
+              = link_to title, refinery.leaders_group_path(group)
               %i
                 (
                 = group.power.name

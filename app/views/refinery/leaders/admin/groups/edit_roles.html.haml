@@ -1,0 +1,8 @@
+Edit roles
+
+= form_for [refinery, :update_roles_leaders_admin, @group], :method => 'post' do |f|
+  - @group.group_individuals.each do |gi|
+    %div
+      = gi.individual.name
+      = text_field_tag gi.individual_id.to_s+"_role"
+  = render '/refinery/admin/form_actions', :f => f, :continue_editing => false,:delete_title => t('delete', :scope => 'refinery.leaders.admin.leaders.group'),:delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @group.name)

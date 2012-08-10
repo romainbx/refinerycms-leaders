@@ -11,8 +11,10 @@ module Refinery
 
       validates :name, :presence => true
 
-      has_and_belongs_to_many :individuals, :class_name => "Refinery::Leaders::Individual", :join_table => 'refinery_leaders_groups_individuals'
+      has_many :group_individuals
+      has_many :individuals, :class_name => "Refinery::Leaders::Individual", :through => :group_individuals
       attr_accessible :individuals
+
       acts_as_indexed :fields => [:name]
     end
   end

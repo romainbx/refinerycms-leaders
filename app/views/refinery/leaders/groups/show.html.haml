@@ -9,9 +9,10 @@
               %div{:style=>'box-shadow:0px 1px 1px #FFF;display:inline-block;width:10px;border-radius:10px;height:10px;background:'+@group.power.color}
               = @group.power.name
 
-            %div{:style=>'margin-left:15px;margin-top:10px;'}
-              %i.icon-download-alt
-              = link_to 'Organigrammes', '/leaders/powers/'+@group.power.id.to_s+'/organigramme/'
+            - if @group.power.page_organigramme
+              %div{:style=>'margin-left:15px;margin-top:10px;'}
+                %i.icon-download-alt
+                = link_to 'Organigrammes', '/leaders/powers/'+@group.power.id.to_s+'/organigramme/'
             - groups = Refinery::Leaders::Group.where(:power_id => @group.power.id)
             - groups.each do |group|
               %div{:style=>'margin-left:15px;margin-top:10px;'}
