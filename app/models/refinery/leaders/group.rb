@@ -16,6 +16,12 @@ module Refinery
       attr_accessible :individuals
 
       acts_as_indexed :fields => [:name]
+
+      def name_with_power_name
+        power_name = self.power.name
+        power_name = self.power.short_name if self.power.short_name
+        return power_name + " - " + self.name
+      end
     end
   end
 end

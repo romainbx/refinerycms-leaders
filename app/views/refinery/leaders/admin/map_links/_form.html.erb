@@ -1,0 +1,37 @@
+<%= form_for [refinery, :leaders_admin, @map_link] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @map_link,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :group -%>
+    <%= select_tag 'group_id', options_from_collection_for_select(Refinery::Leaders::Group.all, 'id', 'name_with_power_name', @map_link.group_id), :include_blank => true %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :top -%>
+    <%= f.text_field :top -%>
+  </div>
+  <div class='field'>
+    <%= f.label :left -%>
+    <%= f.text_field :left -%>
+  </div>
+  <div class='field'>
+    <%= f.label :width -%>
+    <%= f.text_field :width -%>
+  </div>
+  <div class='field'>
+    <%= f.label :height -%>
+    <%= f.text_field :height -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.leaders.admin.leaders.map_link'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @map_link.name) %>
+<% end -%>

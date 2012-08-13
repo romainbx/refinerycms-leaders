@@ -144,6 +144,9 @@ GEM
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       paper_trail (~> 2)
+    gon (4.0.0)
+      actionpack (>= 2.3.0)
+      json
     guard (1.2.3)
       listen (>= 0.4.2)
       thor (>= 0.14.6)
@@ -275,6 +278,7 @@ DEPENDENCIES
   activerecord-jdbcsqlite3-adapter
   acts_as_indexed (~> 0.7)
   coffee-rails
+  gon
   guard-rspec (~> 0.7.0)
   guard-spork (~> 0.5.2)
   jquery-rails (~> 2.0.0)

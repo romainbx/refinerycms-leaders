@@ -9,7 +9,7 @@ module Refinery
 
       def verify_user
         if !current_refinery_user
-          redirect_to '/'
+          redirect_to '/refinery'
         end
       end
     end

@@ -1,6 +1,6 @@
 %section#records
-  %div{:style=>'margin-bottom:20px'}
-    %div{:style=>'margin-bottom:10px;font-size:20px;'}
+  %div.admin{:style=>'margin-bottom:20px'}
+    %div{:style=>'margin-bottom:10px;font-size:20px!important;'}
       = link_to 'Dirigeants', '/refinery/individuals'
     %div
       - @individuals.each do |individual|
@@ -18,11 +18,9 @@
     %div
       - @groups.each do |group|
         %div
+          %div{:style=>"line-height:20px;margin-top:5px;margin-right:10px;border-radius:5px;box-shadow:0px 1px 2px #777; height:20px;color:white;text-align:center;text-shadow:0px 1px 1px #888;min-width:80px;display:inline-block;background:"+group.power.color+";padding:3px;"}
+            = group.power.short_name ||= group.power.name
           = link_to group.name, refinery.edit_leaders_admin_group_path(group)
-          %i
-            (
-            = group.power.name
-            )
   .clearfix
   %div{:style=>'margin-bottom:20px'}
     %div{:style=>'margin-bottom:10px;font-size:20px!important;'}

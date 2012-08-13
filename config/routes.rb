@@ -21,6 +21,7 @@ Refinery::Core::Engine.routes.draw do
       end
       resources :individuals
       resources :powers
+      resources :map_links
     end
   end
 

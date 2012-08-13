@@ -22,7 +22,7 @@
                 %div{:style=>'float:left;margin-right:5px;margin-top:4px;border-radius:5px;width:10px;height:10px;background:'+group.power.color}
               %i.icon-th
               - title = group.name
-              - title = gi.role+", "+title if !gi.role.empty?
+              - title = gi.role+", "+title if gi.role
               = link_to title, refinery.leaders_group_path(group)
               %i
                 (

@@ -10,12 +10,12 @@
               = @group.power.name
 
             - if @group.power.page_organigramme
-              %div{:style=>'margin-left:15px;margin-top:10px;'}
+              .directory-menu-link
                 %i.icon-download-alt
                 = link_to 'Organigrammes', '/leaders/powers/'+@group.power.id.to_s+'/organigramme/'
             - groups = Refinery::Leaders::Group.where(:power_id => @group.power.id)
             - groups.each do |group|
-              %div{:style=>'margin-left:15px;margin-top:10px;'}
+              .directory-menu-link
                 %i.icon-th
                 = link_to group.name, refinery.leaders_group_path(group)
         .span9
@@ -31,4 +31,4 @@
 
           .group{:style=>'margin-top:20px;'}
             - @group.individuals.each do |individual|
-              = render :partial => 'refinery/leaders/individuals/individual', :locals => { :individual => individual }
+              = render :partial => 'refinery/leaders/individuals/individual', :locals => { :individual => individual, :group => @group }

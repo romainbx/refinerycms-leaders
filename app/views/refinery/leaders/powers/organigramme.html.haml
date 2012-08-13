@@ -21,3 +21,6 @@
                 = link_to group.name, refinery.leaders_group_path(group)
         .span9
           = raw(page.content_for(:body).gsub("[[", "<").gsub("]]", ">"))
+
+= javascript_tag do
+  window.map_links = #{raw @map_links.to_json}
