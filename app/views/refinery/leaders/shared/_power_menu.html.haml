@@ -1,0 +1,18 @@
+%div{:style=>'padding-left:20px'}
+  %div{:style=>'padding-bottom:20px;text-transform:uppercase;font-weight:bold;border-bottom:1px dotted '+power.color}
+    %div{:style=>'box-shadow:0px 1px 1px #FFF;display:inline-block;width:10px;border-radius:10px;height:10px;background:'+power.color}
+    = power.name
+  .directory-menu-button{:style=>'border-bottom-color:'+power.color}
+    - if power.page_organigramme && !power.page_organigramme.empty?
+      %i.icon-download-alt
+      = link_to 'Organigrammes', refinery.leaders_path(power), :class => 'directory-menu-link'
+    - if power.map
+      %i.icon-globe
+      = link_to 'Carte', ''+power.id.to_s+'/map', :class => 'directory-menu-link'
+
+  - groups.each do |group|
+    .directory-menu-button{:style=>'border-bottom-color:'+power.color}
+      %i.icon-th
+      = link_to group.name, refinery.leaders_group_path(group), :class => 'directory-menu-link'
+
+= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders')

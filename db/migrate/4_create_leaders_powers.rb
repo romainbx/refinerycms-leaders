@@ -7,8 +7,11 @@ class CreateLeadersPowers < ActiveRecord::Migration
       t.string :color
       t.string :page_organigramme
       t.text :description
+      t.integer :map_id
       t.timestamps
     end
+
+    add_index :refinery_leaders_powers, :map_id
   end
 
   def down

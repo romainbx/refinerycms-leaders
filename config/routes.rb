@@ -6,6 +6,7 @@ Refinery::Core::Engine.routes.draw do
     resources :powers, :only => [:show]
 
     match 'powers/:id/organigramme' => 'powers#organigramme'
+    match 'powers/:id/map' => 'powers#map'
   end
 
   namespace :leaders, :path => '' do
@@ -22,6 +23,7 @@ Refinery::Core::Engine.routes.draw do
       resources :individuals
       resources :powers
       resources :map_links
+      resources :maps
     end
   end
 

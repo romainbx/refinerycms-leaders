@@ -1,4 +1,3 @@
-- page = Refinery::Page.find_by_slug(@power.page_organigramme)
 .row
   .span12
     = render 'refinery/leaders/shared/menu'
@@ -7,7 +6,11 @@
         .span3
           = render :partial => 'refinery/leaders/shared/power_menu', :locals => {:power => @power, :groups => @groups}
         .span9
-          = raw(page.content_for(:body).gsub("[[", "<").gsub("]]", ">"))
+          %div#map
+            = image_fu @power.map.image
 
 = javascript_tag do
   window.map_links = #{raw @map_links.to_json}
+
+= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders')
+= content_for :javascripts, javascript_include_tag('refinery/leaders/leaders')

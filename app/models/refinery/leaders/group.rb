@@ -1,6 +1,7 @@
 module Refinery
   module Leaders
     class Group < Refinery::Core::BaseModel
+      include ActionView::Helpers::TextHelper
       self.table_name = 'refinery_leaders_groups'
 
       attr_accessible :name, :name_chinese, :name_english, :description
@@ -20,7 +21,7 @@ module Refinery
       def name_with_power_name
         power_name = self.power.name
         power_name = self.power.short_name if self.power.short_name
-        return power_name + " - " + self.name
+        return power_name + " - " + truncate(self.name, :length=>60)
       end
     end
   end

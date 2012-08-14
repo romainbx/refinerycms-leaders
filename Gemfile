@@ -70,5 +70,5 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
 end
-
+gem 'jquery-ui-rails'
 gem 'jquery-rails', '~> 2.0.0'

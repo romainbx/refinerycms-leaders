@@ -4,20 +4,8 @@
     .directory-content
       .row
         .span3
-          %div{:style=>'padding-left:20px;'}
-            %div{:style=>'text-transform:uppercase;font-weight:bold;'}
-              %div{:style=>'box-shadow:0px 1px 1px #FFF;display:inline-block;width:10px;border-radius:10px;height:10px;background:'+@group.power.color}
-              = @group.power.name
-
-            - if @group.power.page_organigramme
-              .directory-menu-link
-                %i.icon-download-alt
-                = link_to 'Organigrammes', '/leaders/powers/'+@group.power.id.to_s+'/organigramme/'
-            - groups = Refinery::Leaders::Group.where(:power_id => @group.power.id)
-            - groups.each do |group|
-              .directory-menu-link
-                %i.icon-th
-                = link_to group.name, refinery.leaders_group_path(group)
+          - groups = Refinery::Leaders::Group.where(:power_id => @group.power.id)
+          = render :partial => 'refinery/leaders/shared/power_menu', :locals => {:power => @group.power, :groups => groups }
         .span9
           %div{:style=>'margin-left:auto;margin-right:auto;max-width:500px;text-align:center;'}
             %div{:style=>'font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}

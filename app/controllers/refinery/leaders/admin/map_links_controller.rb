@@ -20,7 +20,6 @@ module Refinery
         end
 
         def update
-          binding.pry
           map_link = Refinery::Leaders::MapLink.find(params[:id])
           map_link.name = params[:map_link][:name]
           map_link.top = params[:map_link][:top]

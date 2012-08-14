@@ -1,0 +1,18 @@
+<li id="sortable_<%= map.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <strong><%= map.name %></strong>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('delete.png'),
+              refinery.leaders_admin_map_path(map),
+              :class => "cancel confirm-delete",
+              :title => t('delete', :scope => 'refinery.admin.users'),
+              :method => :delete,
+              :data => {
+                :confirm => t('message', :scope => 'refinery.admin.delete', :title => map.name)
+              } %>
+    <%= link_to refinery_icon_tag('application_edit.png'),
+                refinery.edit_leaders_admin_map_path(map),
+                :title => t('edit', :scope => 'refinery.admin.users') if current_refinery_user.can_edit?(map) %>
+  </span>
+</li>

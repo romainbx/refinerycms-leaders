@@ -3,7 +3,8 @@ module Refinery
     class Power < Refinery::Core::BaseModel
       self.table_name = 'refinery_leaders_powers'
 
-      attr_accessible :name, :color, :page_organigramme, :short_name, :description
+      belongs_to :map, :class_name => 'Refinery::Leaders::Map', :foreign_key => :map_id
+      attr_accessible :name, :color, :page_organigramme, :short_name, :description, :map_id
 
       validates :name, :presence => true
 

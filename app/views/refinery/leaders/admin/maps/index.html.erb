@@ -1,0 +1,7 @@
+<section id='records'>
+<%= will_paginate @maps if Refinery::Leaders::Admin::MapsController.pageable? %>
+<%= render 'sortable_list' %>
+</section>
+<aside id='actions'>
+  <%= render 'actions' %>
+</aside>

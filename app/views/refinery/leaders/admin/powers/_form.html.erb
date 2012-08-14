@@ -21,6 +21,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label :map -%>
+    <%= select_tag 'power[map_id]', options_from_collection_for_select(Refinery::Leaders::Map.all, 'id', 'name', @power.map_id), :include_blank => true %>
+  </div>
+
+  <div class='field'>
     <%= f.label :description -%>
     <%= f.text_area :description, :rows => 10, :class => 'wymeditor widest' -%>
   </div>
