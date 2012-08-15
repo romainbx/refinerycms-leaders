@@ -16,12 +16,12 @@
               = raw @group.name_chinese
           - staff = ""
           - tab = @group.description.split(".staff")
-          - if !tab[0].match(/^.staff/)
+          - if tab[0] && !tab[0].match(/^.staff/)
             = raw tab[0]
             - staff = tab[1] if tab[1]
           - else
             - staff = tab[0]
-          - if !staff.empty?
+          - if staff && !staff.empty?
             - final_description = ""
             - staff = staff.gsub("<p>","").gsub("</p>","").gsub("\r\n","").gsub(".info",".box.info").gsub("<br />.colonne",".colonne").gsub("<br />.row",".row").gsub("<br />.box",".box")
             - tab_of_row = staff.strip.split(".row")
