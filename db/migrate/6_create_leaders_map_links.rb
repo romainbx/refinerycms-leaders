@@ -6,8 +6,8 @@ class CreateLeadersMapLinks < ActiveRecord::Migration
       t.integer :top
       t.integer :left
       t.integer :group_id
-      t.integer :width
-      t.integer :height
+      t.integer :width, :default => 100
+      t.integer :height, :default => 20
       t.integer :map_id
       t.timestamps
     end

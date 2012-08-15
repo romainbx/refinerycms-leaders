@@ -20,6 +20,11 @@ module Refinery
         def edit
         end
 
+        def getImageUrl
+          map = Refinery::Leaders::Map.find(params[:map_id])
+          render :text => map.image.url
+        end
+
       private
 
         def find_current_map

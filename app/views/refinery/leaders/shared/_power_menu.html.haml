@@ -8,7 +8,7 @@
       = link_to 'Organigrammes', refinery.leaders_path(power), :class => 'directory-menu-link'
     - if power.map
       %i.icon-globe
-      = link_to 'Carte', ''+power.id.to_s+'/map', :class => 'directory-menu-link'
+      = link_to 'Carte', refinery.leaders_powers_map_path(power), :class => 'directory-menu-link'
 
   - groups.each do |group|
     .directory-menu-button{:style=>'border-bottom-color:'+power.color}

@@ -10,7 +10,7 @@
 
   <div class='field'>
     <%= f.label :group -%>
-    <%= select_tag 'group_id', options_from_collection_for_select(Refinery::Leaders::Group.all, 'id', 'name_with_power_name', @map_link.group_id), :include_blank => true %>
+    <%= select_tag 'map_link[group_id]', options_from_collection_for_select(Refinery::Leaders::Group.all, 'id', 'name_with_power_name', @map_link.group_id), :include_blank => true %>
   </div>
 
   <div class='field'>
@@ -32,15 +32,18 @@
 
   <div class='field'>
     <%= f.label :map -%>
-    <%= select_tag 'map_id', options_from_collection_for_select(Refinery::Leaders::Map.all, 'id', 'name', @map_link.map_id), :include_blank => true %>
+    <%= select_tag 'map_link[map_id]', options_from_collection_for_select(Refinery::Leaders::Map.all, 'id', 'name', @map_link.map_id), :include_blank => true %>
   </div>
   <div id="map">
-    <%= image_fu @map_link.map.image %>
+    <% if @map_link.map %>
+      <%= image_fu @map_link.map.image %>
+    <% end %>
     <div id="click-map" style="overflow: auto;width:100%;height:100%;top:0;position:absolute;">
     </div>
   </div>
 
 <%= javascript_tag do %>
+  window.maps = <%= raw Refinery::Leaders::Map.all.to_json %>;
   window.admin_map_links = [<%=raw @map_link.to_json %>];
 <% end %>
 <%= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders') %>
