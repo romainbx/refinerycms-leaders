@@ -1,7 +1,8 @@
+= render :partial => '/refinery/leaders/admin/actions'
 %section#records
   %div.admin{:style=>'margin-bottom:20px'}
-    %div{:style=>'margin-bottom:10px;font-size:20px!important;'}
-      = link_to 'Dirigeants', '/refinery/individuals'
+    %div{:style=>'margin-bottom:10px:'}
+      = link_to 'Dirigeants', '/refinery/individuals', :class => 'big-title'
     %div
       - @individuals.each do |individual|
         = link_to refinery.edit_leaders_admin_individual_path(individual) do
@@ -13,22 +14,22 @@
               = individual.name_chinese
   .clearfix
   %div{:style=>'margin-bottom:20px'}
-    %div{:style=>'margin-bottom:10px;font-size:20px;'}
-      = link_to 'Groupes', '/refinery/groups'
+    %div{:style=>'margin-bottom:10px;'}
+      = link_to 'Groupes', '/refinery/groups', :class => 'big-title'
     %div
       - @groups.each do |group|
-        %div
-          %div{:style=>"line-height:20px;margin-top:5px;margin-right:10px;border-radius:5px;box-shadow:0px 1px 2px #777; height:20px;color:white;text-align:center;text-shadow:0px 1px 1px #888;min-width:80px;display:inline-block;background:"+group.power.color+";padding:3px;"}
+        %div{:style=>'padding:5px;border:1px solid #CCC; border-bottom:0px;'}
+          %div{:style=>"font-size:10px;line-height:16px;margin-right:10px;border-radius:5px;box-shadow:0px 1px 2px #777; height:16px;color:white;text-align:center;text-shadow:0px 1px 1px #888;min-width:80px;display:inline-block;background:"+group.power.color+";padding:3px;"}
             = group.power.short_name ||= group.power.name
           = link_to group.name, refinery.edit_leaders_admin_group_path(group)
+      %div{:style=>'border-top:1px solid #CCC;'}
   .clearfix
   %div{:style=>'margin-bottom:20px'}
-    %div{:style=>'margin-bottom:10px;font-size:20px!important;'}
-      = link_to 'Pouvoirs', '/refinery/powers'
+    %div{:style=>'margin-bottom:10px;'}
+      = link_to 'Pouvoirs', '/refinery/powers', :class => 'big-title'
     %div
       - @powers.each do |power|
-        %div
+        %div{:style=>'padding:5px;border:1px solid #CCC; border-bottom:0px;'}
           %div{:style=>'float:left;margin-right:5px;margin-top:4px;border-radius:5px;width:10px;height:10px;background:'+power.color}
           = link_to power.name, refinery.edit_leaders_admin_power_path(power)
-%aside#actions
-  = render 'actions'
+      %div{:style=>'border-top:1px solid #CCC;'}

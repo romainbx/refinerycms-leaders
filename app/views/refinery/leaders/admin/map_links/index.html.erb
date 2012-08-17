@@ -1,7 +1,5 @@
+<%= render :partial => '/refinery/leaders/admin/actions' %>
 <section id='records'>
 <%= will_paginate @map_links if Refinery::Leaders::Admin::MapLinksController.pageable? %>
 <%= render 'sortable_list' %>
 </section>
-<aside id='actions'>
-  <%= render 'actions' %>
-</aside>

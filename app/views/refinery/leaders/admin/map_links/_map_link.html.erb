@@ -1,6 +1,7 @@
 <li id="sortable_<%= map_link.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
   <span class='title'>
-    <strong><%= map_link.name %></strong>
+    <strong><%= map_link.name %></strong>,
+    <%= map_link.map.name %>
   </span>
   <span class='actions'>
     <%= link_to refinery_icon_tag('delete.png'),
