@@ -1,5 +1,12 @@
-<li id="sortable_<%= individual.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
-  <span class='title'>
+<li style="margin-bottom:0px;line-height: 12px;padding-left:0px;" id="sortable_<%= individual.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <% 
+  if individual.groups.count > 0
+    width = 35 / individual.groups.count
+    individual.groups.each do |group| %><div rel="tooltip" title="<%=group.power.name %>" style="vertical-align:middle;width:<%=width%>px;line-height:20px;height:35px;display:inline-block;background:<%=group.power.color %>"></div><% end %><% if (width * individual.groups.count) < 35 %><div rel="tooltip" title="<%=individual.groups.last.power.name %>" style="vertical-align:middle;width:<%=35 - (width * individual.groups.count)%>px;line-height:20px;height:35px;display:inline-block;background:<%=individual.groups.last.power.color %>"></div><% end %>
+  <% else %>
+    <div  style="vertical-align:middle;width:35px;line-height:20px;height:35px;display:inline-block;background:white;"></div>  
+  <% end %>
+  <span class='title' style="padding-left:10px;">
     <strong><%= individual.name %></strong>
   </span>
   <span class='actions'>

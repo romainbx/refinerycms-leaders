@@ -1,4 +1,5 @@
 <li id="sortable_<%= map.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <%= image_fu map.image, Refinery::Images.user_image_sizes["small".to_sym] %>
   <span class='title'>
     <strong><%= map.name %></strong>
   </span>

@@ -4,6 +4,8 @@ module Refinery
       include ActionView::Helpers::TextHelper
       self.table_name = 'refinery_leaders_groups'
 
+      default_scope :order => 'name ASC'
+
       attr_accessible :name, :name_chinese, :name_english, :description
 
       belongs_to :power, :class_name => 'Refinery::Leaders::Power', :foreign_key => :power_id

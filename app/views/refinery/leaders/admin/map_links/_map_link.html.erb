@@ -1,4 +1,5 @@
-<li id="sortable_<%= map_link.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+<li style="margin-bottom:0px;line-height: 12px;" id="sortable_<%= map_link.id %>" class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <div rel="tooltip" title="<%=map_link.group.power.name %>" style="vertical-align:middle;margin-left:-5px;width:35px;line-height:20px;margin-right:10px;height:35px;display:inline-block;background:<%=map_link.group.power.color %>"></div>
   <span class='title'>
     <strong><%= map_link.name %></strong>,
     <%= map_link.map.name %>

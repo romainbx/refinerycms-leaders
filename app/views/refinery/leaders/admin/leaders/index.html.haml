@@ -8,28 +8,15 @@
         = link_to refinery.edit_leaders_admin_individual_path(individual) do
           %div{:style=>'display:inline-block;width:120px;text-align:center;margin-bottom:10px;'}
             = image_fu individual.image, Refinery::Images.user_image_sizes["small".to_sym]
-            %div{:style=>''}
+            %div{:style=>'font-size:12px;'}
               = individual.name
-              %br
+            %div{:style=>'font-size:12px;color:#888;'}
               = individual.name_chinese
   .clearfix
-  %div{:style=>'margin-bottom:20px'}
-    %div{:style=>'margin-bottom:10px;'}
-      = link_to 'Groupes', '/refinery/groups', :class => 'big-title'
-    %div
-      - @groups.each do |group|
-        %div{:style=>'padding:5px;border:1px solid #CCC; border-bottom:0px;'}
-          %div{:style=>"font-size:10px;line-height:16px;margin-right:10px;border-radius:5px;box-shadow:0px 1px 2px #777; height:16px;color:white;text-align:center;text-shadow:0px 1px 1px #888;min-width:80px;display:inline-block;background:"+group.power.color+";padding:3px;"}
-            = group.power.short_name ||= group.power.name
-          = link_to group.name, refinery.edit_leaders_admin_group_path(group)
-      %div{:style=>'border-top:1px solid #CCC;'}
+  = link_to 'Groupes', '/refinery/groups', :class => 'big-title'
+  %ul#sortable_list
+    = render :partial => '/refinery/leaders/admin/groups/group', :collection => @groups
   .clearfix
-  %div{:style=>'margin-bottom:20px'}
-    %div{:style=>'margin-bottom:10px;'}
-      = link_to 'Pouvoirs', '/refinery/powers', :class => 'big-title'
-    %div
-      - @powers.each do |power|
-        %div{:style=>'padding:5px;border:1px solid #CCC; border-bottom:0px;'}
-          %div{:style=>'float:left;margin-right:5px;margin-top:4px;border-radius:5px;width:10px;height:10px;background:'+power.color}
-          = link_to power.name, refinery.edit_leaders_admin_power_path(power)
-      %div{:style=>'border-top:1px solid #CCC;'}
+  = link_to 'Pouvoirs', '/refinery/powers', :class => 'big-title'
+  %ul#sortable_list
+    = render :partial => '/refinery/leaders/admin/powers/power', :collection => @powers
