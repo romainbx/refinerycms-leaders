@@ -1,8 +1,6 @@
 
 $(document).ready(function(){
 
-  $("[rel=tooltip]").tooltip();
-
   var img = $("#map img")[0];
   if (img != undefined) {
     img.onload = function() {
