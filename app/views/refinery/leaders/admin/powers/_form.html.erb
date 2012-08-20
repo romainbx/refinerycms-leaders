@@ -16,12 +16,12 @@
     <%= f.text_field :color -%>
   </div>
   <div class='field'>
-    <%= f.label :page_organigramme -%>
+    <label><i class="icon-retweet"></i> Page d'organigramme</label>
     <%= f.text_field :page_organigramme -%>
   </div>
 
   <div class='field'>
-    <%= f.label :map -%>
+    <label><i class="icon-globe"></i> Carte</label>
     <%= select_tag 'power[map_id]', options_from_collection_for_select(Refinery::Leaders::Map.all, 'id', 'name', @power.map_id), :include_blank => true %>
   </div>
 

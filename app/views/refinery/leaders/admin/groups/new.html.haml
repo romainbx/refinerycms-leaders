@@ -1,0 +1,7 @@
+.big-title
+  %i.icon-th
+  Nouveau groupe
+%section
+  = render 'form'
+= yield :actions
+= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/backend')

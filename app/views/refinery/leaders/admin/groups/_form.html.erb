@@ -17,7 +17,7 @@
     <%= f.text_field :name_chinese  -%>
   </div>
   <div class='field'>
-    <%= f.label :power -%>
+    <label><i class="icon-eye-open"></i> Pouvoir</label>
     <%= select_tag 'power_id', options_from_collection_for_select(Refinery::Leaders::Power.all, 'id', 'name', @group.power_id), :include_blank => true %>
   </div>
 

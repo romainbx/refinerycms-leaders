@@ -1,7 +1,7 @@
 <div class='field group_body'>
-  <%= label_tag :body, 'Membres' -%>
+  <label><i class="icon-user"></i> Membres</label>
   <%= will_paginate @individuals, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-  <ul>
+  <ul style="list-style-type:none;padding-left:0px;">
     <% @individuals.each do |individual| %>
       <li>
       <%= check_box_tag "posts_campaign_post_item", individual.id, @group.individuals.include?(individual.id.to_s), :id => "individual_#{individual.id}" %>

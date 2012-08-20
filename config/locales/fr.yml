@@ -5,21 +5,12 @@ fr:
         title: Répertoire des dirigeants
       groups:
         title: Groups
-    groups:
+    leaders:
       admin:
-        groups:
-          actions:
-            create_new: Créer un(e) nouve(au/l/lle) Group
-            reorder: Réordonner les Groups
-            reorder_done: Fin de réordonnancement des Groups
-          records:
-            title: Groups
-            sorry_no_results: "Désolé ! Aucun résultat."
-            no_items_yet: 'Il n''y a actuellement aucun(e) Group. Cliquer sur "Créer un(e) nouve(au/l/lle) Group" pour créer votre premi(er/ère) group.'
-          group:
-            view_live_html: Voir ce(t/tte) group <br/><em>(Ouvre une nouvelle fenêtre)</em>
-            edit: Modifier ce(t/tte) group
-            delete: Supprimer définitivement ce(t/tte) group
+        actions:
+          create_new: Nouveau
+          edit: Modifier
+          delete: Supprimer
       groups:
         show:
           other: Autres Groups

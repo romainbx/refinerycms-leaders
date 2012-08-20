@@ -1,22 +1,30 @@
 = render :partial => '/refinery/leaders/admin/actions'
 %section#records
   %div.admin{:style=>'margin-bottom:20px'}
-    %div{:style=>'margin-bottom:10px:'}
-      = link_to 'Dirigeants', '/refinery/individuals', :class => 'big-title'
+    .big-title
+      %i.icon-user
+      = link_to 'Dirigeants', '/refinery/individuals'
     %div
       - @individuals.each do |individual|
         = link_to refinery.edit_leaders_admin_individual_path(individual) do
-          %div{:style=>'display:inline-block;width:120px;text-align:center;margin-bottom:10px;'}
+          .admin-individual-photo
             = image_fu individual.image, Refinery::Images.user_image_sizes["small".to_sym]
+            %div{:style=>'text-align:center;margin-top:0px;'}
+              - individual.groups.each do |group|
+                %div{:tooltip=>group.power.short_name+' - '+group.name, :style=>'display:inline-block;width:10px;height:10px;background:'+group.power.color}
             %div{:style=>'font-size:12px;'}
               = individual.name
             %div{:style=>'font-size:12px;color:#888;'}
               = individual.name_chinese
   .clearfix
-  = link_to 'Groupes', '/refinery/groups', :class => 'big-title'
+  .big-title
+    %i.icon-th
+    = link_to 'Groupes', '/refinery/groups'
   %ul#sortable_list
     = render :partial => '/refinery/leaders/admin/groups/group', :collection => @groups
   .clearfix
-  = link_to 'Pouvoirs', '/refinery/powers', :class => 'big-title'
+  .big-title
+    %i.icon-eye-open
+    = link_to 'Pouvoirs', '/refinery/powers'
   %ul#sortable_list
     = render :partial => '/refinery/leaders/admin/powers/power', :collection => @powers

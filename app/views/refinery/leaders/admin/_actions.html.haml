@@ -1,40 +1,48 @@
 %nav#actions.multilist
   %ul.collapsible_menu
     %li.not_a_link
-      = link_to 'Pouvoirs', '#'
-    %li
-      = link_to 'Liste', refinery.leaders_admin_powers_path, :class => 'comment_icon'
-    %li
-      = link_to t('.create_new'), refinery.new_leaders_admin_power_path, :class => "add_icon", :id => "add_power"
-
-  %ul.collapsible_menu
-    %li.not_a_link
-      = link_to 'Groupes', '#'
-    %li
-      = link_to 'Liste', refinery.leaders_admin_groups_path, :class => 'folder_edit_icon', :id => "edit_group"
-    %li
-      = link_to t('.create_new'), refinery.new_leaders_admin_group_path, :class => "folder_add_icon", :id => "add_group"
-
-  %ul.collapsible_menu
-    %li.not_a_link
+      %i.action.icon-white.icon-user
       = link_to 'Dirigeants', '#'
     %li
-      = link_to 'Liste', refinery.leaders_admin_individuals_path, :class => 'comment_icon'
+      %i.action.icon-white.icon-list-alt
+      = link_to 'Liste', refinery.leaders_admin_individuals_path
     %li
-      = link_to t('.create_new'), refinery.new_leaders_admin_individual_path, :class => "add_icon", :id => "add_individual"
-
+      %i.action.icon-white.icon-plus-sign
+      = link_to t('.create_new'), refinery.new_leaders_admin_individual_path
   %ul.collapsible_menu
     %li.not_a_link
+      %i.action.icon-white.icon-th
+      = link_to 'Groupes', '#'
+    %li
+      %i.action.icon-white.icon-list-alt
+      = link_to 'Liste', refinery.leaders_admin_groups_path
+    %li
+      %i.action.icon-white.icon-plus-sign
+      = link_to t('.create_new'), refinery.new_leaders_admin_group_path
+  %ul.collapsible_menu
+    %li.not_a_link
+      %i.action.icon-white.icon-eye-open
+      = link_to 'Pouvoirs', '#'
+    %li
+      %i.action.icon-white.icon-list-alt
+      = link_to 'Liste', refinery.leaders_admin_powers_path
+    %li
+      %i.action.icon-white.icon-plus-sign
+      = link_to t('.create_new'), refinery.new_leaders_admin_power_path
+  %ul.collapsible_menu
+    %li.not_a_link
+      %i.action.icon-white.icon-globe
       = link_to 'Carte', '#'
     %li
-      = link_to 'Liste', refinery.leaders_admin_maps_path, :class => 'comment_icon'
+      %i.action.icon-white.icon-list-alt
+      = link_to 'Liste des cartes', refinery.leaders_admin_maps_path
     %li
-      = link_to t('.create_new'), refinery.new_leaders_admin_map_path, :class => "add_icon", :id => "add_map"
-
-  %ul.collapsible_menu
-    %li.not_a_link
-      = link_to 'Liens carte', '#'
+      %i.action.icon-white.icon-plus-sign
+      = link_to 'Nouvelle carte', refinery.new_leaders_admin_map_path
     %li
-      = link_to 'Liste', refinery.leaders_admin_map_links_path, :class => 'comment_icon'
+      %i.action.icon-white.icon-list-alt
+      = link_to 'Liste des liens', refinery.leaders_admin_map_links_path
     %li
-      = link_to t('.create_new'), refinery.new_leaders_admin_map_link_path, :class => "add_icon", :id => "add_map_link"
+      %i.action.icon-white.icon-plus-sign
+      = link_to 'Nouveau lien', refinery.new_leaders_admin_map_link_path
+= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/backend')

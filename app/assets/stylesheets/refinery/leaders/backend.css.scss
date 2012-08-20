@@ -1,0 +1,83 @@
+[class^="icon-"], [class*=" icon-"] {
+    background-image: url("/assets/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 14px;
+    line-height: 14px;
+    vertical-align: text-top;
+    width: 14px;
+}
+[class^="icon-"]:last-child, [class*=" icon-"]:last-child {
+}
+.action {
+  left: 12px;
+  position: absolute;
+  top: 9px;
+}
+.icon-white {
+    background-image: url("/assets/glyphicons-halflings-white.png");
+}
+.icon-globe {
+    background-position: -336px -144px;
+}
+.icon-user {
+    background-position: -168px 0;
+}
+.icon-map-marker {
+    background-position: -24px -72px;
+}
+.icon-retweet {
+    background-position: -336px -120px;
+}
+.icon-th {
+    background-position: -240px 0;
+}
+.icon-th-list {
+    background-position: -264px 0;
+}
+.icon-eye-open {
+    background-position: -96px -120px;
+}
+.icon-plus-sign {
+    background-position: 0 -96px;
+}
+.icon-list-alt {
+    background-position: -264px -24px;
+}
+
+.edit_map_link {
+  label {
+    display:inline-block;
+    width:200px;
+  }
+}
+
+.tooltip {
+  background: none repeat scroll 0 0 #000;
+  opacity:0;
+  font-size:11px!important;
+  position: relative;
+  word-wrap: break-word;
+  border: none;
+}
+
+.tooltip span {
+  opacity:.8;
+  border: none;
+  display: block;
+  padding: 10px;
+  text-shadow:none;
+}
+
+.admin-individual-photo {
+  input {
+    width:80px;
+  }
+}
+
+.link-on-map-admin {
+  border:2px solid black;
+  background:#FFF;
+  opacity:.5;
+}

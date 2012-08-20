@@ -1,6 +1,8 @@
 
 $(document).ready(function(){
 
+  $("[rel=tooltip]").tooltip();
+
   var img = $("#map img")[0];
   if (img != undefined) {
     img.onload = function() {
@@ -69,6 +71,7 @@ $(document).ready(function(){
     {
       if (maps[i].id == $(this).val()) {
         $.post('/refinery/maps/getImageUrl', {map_id : $(this).val()}, function(result) {
+          $('#map > img').remove();
           $('#map').append('<img src="'+result+'">');
           img = $("#map img")[0];
         });

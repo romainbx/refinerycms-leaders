@@ -4,34 +4,22 @@
               :include_object_name => true %>
 
   <div class='field'>
-    <%= f.label :name -%>
+    <label>Nom</label>
     <%= f.text_field :name -%>
   </div>
 
   <div class='field'>
-    <%= f.label :group -%>
+    <label><i class="icon-th"></i> Groupe</label>
     <%= select_tag 'map_link[group_id]', options_from_collection_for_select(Refinery::Leaders::Group.all, 'id', 'name_with_power_name', @map_link.group_id), :include_blank => true %>
   </div>
 
-  <div class='field'>
-    <%= f.label :top -%>
-    <%= f.text_field :top -%>
-  </div>
-  <div class='field'>
-    <%= f.label :left -%>
-    <%= f.text_field :left -%>
-  </div>
-  <div class='field'>
-    <%= f.label :width -%>
-    <%= f.text_field :width -%>
-  </div>
-  <div class='field'>
-    <%= f.label :height -%>
-    <%= f.text_field :height -%>
-  </div>
+  <%= f.hidden_field :top -%>
+  <%= f.hidden_field :left -%>
+  <%= f.hidden_field :width -%>
+  <%= f.hidden_field :height -%>
 
   <div class='field'>
-    <%= f.label :map -%>
+    <label><i class="icon-globe"></i> Carte</label>
     <%= select_tag 'map_link[map_id]', options_from_collection_for_select(Refinery::Leaders::Map.all, 'id', 'name', @map_link.map_id), :include_blank => true %>
   </div>
   <div id="map">
@@ -48,6 +36,7 @@
 <% end %>
 <%= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders') %>
 <%= content_for :javascripts, javascript_include_tag('refinery/leaders/leaders') %>
+<%= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/backend') %>
 
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
