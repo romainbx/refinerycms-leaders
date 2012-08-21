@@ -12,6 +12,9 @@ module Refinery
       belongs_to :group, :class_name => 'Refinery::Leaders::Group', :foreign_key => :group_id
       attr_accessible :power_id, :group_id
 
+      has_many :groups, :class_name => "Refinery::Leaders::Group"
+      attr_accessible :groups
+
       validates :name, :presence => true
 
       has_many :group_individuals

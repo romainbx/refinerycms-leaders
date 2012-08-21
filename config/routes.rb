@@ -7,6 +7,7 @@ Refinery::Core::Engine.routes.draw do
 
     match 'powers/:id/organigramme' => 'powers#organigramme'
     match 'powers/:id/map' => 'powers#map', :as => 'powers_map'
+    match 'groups/getContentToDisplay' => 'groups#getContentToDisplay'
   end
 
   namespace :leaders, :path => '' do

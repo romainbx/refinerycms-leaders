@@ -11,8 +11,14 @@
       = link_to 'Carte', refinery.leaders_powers_map_path(power), :class => 'directory-menu-link'
 
   - groups.each do |group|
+    - next if group.group_id
     .directory-menu-button{:style=>'border-bottom-color:'+power.color}
       %i.icon-th
       = link_to group.name, refinery.leaders_group_path(group), :class => 'directory-menu-link'
+      - if group.groups.any?
+        - group.groups.each do |subgroup|
+          %div{:style=>'margin:5px 15px;'}
+            %i.icon-th
+            = link_to subgroup.name, refinery.leaders_group_path(subgroup), :class => 'directory-menu-link'
 
 = content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders')

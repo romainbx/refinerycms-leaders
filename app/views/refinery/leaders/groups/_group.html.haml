@@ -1,0 +1,12 @@
+.individual
+  = link_to refinery.leaders_group_path(group) do
+    %div{:style=>':width:86px;height:110px;border: 3px solid white;box-shadow: 0 1px 2px #888888;background:'+group.power.color}
+  %div{:style=>'text-align:center;margin-top:5px;'}
+    %div{:rel=>'tooltip', :title=>group.power.short_name+' - '+group.name, :style=>'display:inline-block;width:10px;border-radius:5px;height:10px;background:'+group.power.color}
+  %div
+    %i.icon-th
+    = link_to group.name, refinery.leaders_group_path(group)
+    %br
+    = link_to group.name_english, refinery.leaders_group_path(group)
+    %br
+    = link_to group.name_chinese, refinery.leaders_group_path(group)

@@ -20,6 +20,10 @@
     <label><i class="icon-eye-open"></i> Pouvoir</label>
     <%= select_tag 'power_id', options_from_collection_for_select(Refinery::Leaders::Power.all, 'id', 'name', @group.power_id), :include_blank => true %>
   </div>
+  <div class='field'>
+    <label><i class="icon-th"></i> Groupe</label>
+    <%= select_tag 'group_id', options_from_collection_for_select(Refinery::Leaders::Group.all, 'id', 'name_with_power_name', @group.group_id), :include_blank => true %>
+  </div>
 
   <div class='field'>
     <%= f.label :description -%>

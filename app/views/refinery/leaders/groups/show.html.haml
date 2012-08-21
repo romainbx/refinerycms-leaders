@@ -60,3 +60,5 @@
           .group{:style=>'margin-top:20px;'}
             - @group.individuals.each do |individual|
               = render :partial => 'refinery/leaders/individuals/individual', :locals => { :individual => individual, :group => @group }
+            - @group.groups.each do |subgroup|
+              = render :partial => 'refinery/leaders/groups/group', :locals => { :group => subgroup }
