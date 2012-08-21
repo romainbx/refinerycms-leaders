@@ -4,7 +4,7 @@
     = power.name
   .directory-menu-button{:style=>'border-bottom-color:'+power.color}
     - if power.page_organigramme && !power.page_organigramme.empty?
-      %i.icon-download-alt
+      %i.icon-retweet
       = link_to 'Organigrammes', refinery.leaders_path(power), :class => 'directory-menu-link'
     - if power.map
       %i.icon-globe
