@@ -17,7 +17,7 @@ module Refinery
           if !gi.role.empty?
             result += '<div class="chart-inside-node">'
             result += '<div><b>'+gi.role+'</b><br>'+gi.individual.name+'</div>'
-            result += '<img src="'+gi.individual.image.thumbnail("40x").url+'">'
+            result += '<div class="chart-inside-node-image"><img src="'+gi.individual.image.thumbnail("40x").url+'"></div>'
             result += '</div>'
           end
         end
