@@ -10,7 +10,7 @@
 
   <div class='field'>
     <label><i class="icon-th"></i> Groupe</label>
-    <%= select_tag 'map_link[group_id]', options_from_collection_for_select(Refinery::Leaders::Group.all, 'id', 'name_with_power_name', @map_link.group_id), :include_blank => true %>
+    <%= select_tag 'map_link[group_id]', options_from_collection_for_select(Refinery::Leaders::Group.all, 'id', 'name_with_power_name', @map_link.group_id), :include_blank => true, :class => 'chzn-select' %>
   </div>
 
   <%= f.hidden_field :top -%>
@@ -20,7 +20,7 @@
 
   <div class='field'>
     <label><i class="icon-globe"></i> Carte</label>
-    <%= select_tag 'map_link[map_id]', options_from_collection_for_select(Refinery::Leaders::Map.all, 'id', 'name', @map_link.map_id), :include_blank => true %>
+    <%= select_tag 'map_link[map_id]', options_from_collection_for_select(Refinery::Leaders::Map.all, 'id', 'name', @map_link.map_id), :include_blank => true, :class => 'chzn-select' %>
   </div>
   <div id="map">
     <% if @map_link.map %>

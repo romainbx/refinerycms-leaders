@@ -2,6 +2,23 @@
  *= require jquery.ui.all
  */
 
+ @import "chosen";
+
+a.chzn-single {
+  border:1px solid #7F9DB9!important;
+  background:none!important;
+  border-radius:0px!important;
+  box-shadow:none!important;
+  width:234px;
+}
+
+.chzn-drop {
+  width:242px!important;
+  border-radius:0px!important;
+  border-color:#7F9DB9!important;
+  text-shadow:none;
+}
+
  #menu {
   border:0px;
  }

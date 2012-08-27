@@ -1,5 +1,9 @@
+//
+//= require chosen-jquery
 
 $(document).ready(function(){
+
+  $(".chzn-select").chosen();
 
   var img = $("#map img")[0];
   if (img != undefined) {

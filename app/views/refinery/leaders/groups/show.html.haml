@@ -32,6 +32,7 @@
               - put_padding_on_top = 0
               - tab_of_colonne.delete_if {|x| x == "" }
               - if tab_of_colonne.length == 1
+                - put_padding_on_top = 1
                 - final_description += "<div class='span3'>&nbsp</div>"
               - tab_of_colonne.each do |colonne|
                 - next if colonne.gsub("<br />","").empty?

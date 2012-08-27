@@ -22,7 +22,7 @@
 
   <div class='field'>
     <label><i class="icon-globe"></i> Carte</label>
-    <%= select_tag 'power[map_id]', options_from_collection_for_select(Refinery::Leaders::Map.all, 'id', 'name', @power.map_id), :include_blank => true %>
+    <%= select_tag 'power[map_id]', options_from_collection_for_select(Refinery::Leaders::Map.all, 'id', 'name', @power.map_id), :include_blank => true, :class => 'chzn-select' %>
   </div>
 
   <div class='field'>
@@ -35,3 +35,7 @@
              :delete_title => t('delete', :scope => 'refinery.leaders.admin.leaders.power'),
              :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @power.name) %>
 <% end -%>
+
+<%= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders') %>
+<%= content_for :javascripts, javascript_include_tag('refinery/leaders/leaders') %>
+<%= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/backend') %>
