@@ -10,25 +10,28 @@ $(document).ready(function(){
     img.onload = function() {
       if(typeof map_links != 'undefined')
       {
+        ratio = getRatio();
+
         for (i=0; i<map_links.length; i++)
         {
-          ratio = getRatio();
-
           thiss = map_links[i];
           topX = (thiss['top'] * ratio);
           left = (thiss['left'] * ratio);
           width = (thiss['width'] * ratio)+2;
           height = (thiss['height'] * ratio)+2;
 
-          $('#map').append('<a href="/leaders/groups/'+thiss['group_id']+'"><div class="link-on-map"style="font-size:10px;width:'+width+'px;height:'+height+'px;top:'+topX+'px;left:'+left+'px;position:absolute;">&nbsp</div></a>');
+          $('#map').append('<a href="/leaders/groups/'+thiss['group_id']+'"><div class="link-on-map" style="font-size:10px;width:'+width+'px;height:'+height+'px;top:'+topX+'px;left:'+left+'px;position:absolute;">&nbsp</div></a>');
         };
       }
+      
+      putStaticMapLinks (static_map_links);
 
       if(typeof admin_map_links != 'undefined')
       {
+        ratio = getRatio();
+
         for (i=0; i<admin_map_links.length; i++)
         {
-          ratio = getRatio();
 
           thiss = admin_map_links[i];
           topX = (thiss['top'] * ratio);
@@ -76,10 +79,36 @@ $(document).ready(function(){
           $('#map > img').remove();
           $('#map').append('<img src="'+result+'">');
           img = $("#map img")[0];
+
+          putStaticMapLinks (static_map_links);
         });
       }
     }
   });
+
+  var putStaticMapLinks = function(list) {
+
+    $('.link-on-map-admin-static').remove();
+    if(typeof list != 'undefined')
+    {
+      ratio = getRatio();
+
+      for (i=0; i<list.length; i++)
+      {
+        thiss = list[i];
+
+        if (thiss['map_id'] == $('#map_link_map_id').val())
+        {
+          topX = (thiss['top'] * ratio);
+          left = (thiss['left'] * ratio);
+          width = (thiss['width'] * ratio)+4;
+          height = (thiss['height'] * ratio)+4;
+
+          $('#click-map').append('<div class="link-on-map-admin-static" style="width:'+width+'px;height:'+height+'px;top:'+topX+'px;left:'+left+'px;position:absolute;">'+thiss['name']+'</div>');
+        }
+      };
+    }
+  }
 
   var getRatio = function() {
     ratio = img.width / img.naturalWidth;

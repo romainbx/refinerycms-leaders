@@ -11,12 +11,14 @@ module Refinery
 
         def new
           @map_link=Refinery::Leaders::MapLink.new
+          @map_links = Refinery::Leaders::MapLink.all
         end
 
         def show
         end
 
         def edit
+          @map_links = Refinery::Leaders::MapLink.where("id != ?", params[:id])
         end
 
       private

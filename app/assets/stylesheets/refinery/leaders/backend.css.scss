@@ -1,3 +1,5 @@
+@import "bourbon";
+
 [class^="icon-"], [class*=" icon-"] {
     background-image: url("/assets/glyphicons-halflings.png");
     background-position: 14px 14px;
@@ -81,7 +83,22 @@
     width:80px;
   }
 }
-
+.link-on-map-admin-static {
+  background:black;
+  color:black;
+  opacity:.4;
+  text-shadow:none;
+  font-size:14px;
+  @include border-radius(5px);
+}
+.link-on-map-admin-static:hover {
+  background:black;
+  color:white;
+  text-align:center;
+  opacity:1;
+  font-size:12px;
+  cursor:default;
+}
 .link-on-map-admin {
   border:2px solid black;
   background:#FFF;

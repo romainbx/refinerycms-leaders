@@ -32,6 +32,7 @@
 
 <%= javascript_tag do %>
   window.maps = <%= raw Refinery::Leaders::Map.all.to_json %>;
+  window.static_map_links = <%=raw @map_links.to_json %>;
   window.admin_map_links = [<%=raw @map_link.to_json %>];
 <% end %>
 <%= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders') %>
