@@ -1,0 +1,5 @@
+$('#individuals').append("#{j render(:partial => "/refinery/leaders/shared/individuals", :locals => {:individuals => @individuals})}");
+- if @individuals.next_page
+  $('.pagination').replaceWith("#{j will_paginate(@individuals) }");
+- else
+  $('.pagination').remove();

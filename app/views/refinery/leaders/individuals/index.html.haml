@@ -2,8 +2,10 @@
   = render 'refinery/leaders/shared/menu'
   = render :partial => 'refinery/leaders/shared/power_menu'
   .directory-content
-    - @individuals.each do |individual|
-      %div
-        = individual.name
+    - if @individuals.any?
+      #individuals
+        = render :partial => "/refinery/leaders/shared/individuals", :locals => {:individuals => @individuals}
+      = will_paginate @individuals
 
 = content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders')
+= content_for :javascripts, javascript_include_tag('refinery/leaders/individuals')
