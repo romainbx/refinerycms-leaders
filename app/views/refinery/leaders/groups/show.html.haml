@@ -1,65 +1,63 @@
-.row
-  .span12
-    = render 'refinery/leaders/shared/menu'
-    .directory-content
-      .row
-        .span3
-          - groups = Refinery::Leaders::Group.where(:power_id => @group.power.id)
-          = render :partial => 'refinery/leaders/shared/power_menu', :locals => {:power => @group.power, :groups => groups }
-        .span9
-          %div{:style=>'margin-left:auto;margin-right:auto;max-width:500px;text-align:center;'}
-            %div{:style=>'font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}
-              = @group.name
-            %div{:style=>'color:#888;font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}
-              = raw @group.name_english
-            %div{:style=>'color:#888;font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}
-              = raw @group.name_chinese
-          - staff = ""
-          - tab = @group.description.split(".staff")
-          - if tab[0] && !tab[0].match(/^.staff/)
-            = raw tab[0]
-            - staff = tab[1] if tab[1]
-          - else
-            - staff = tab[0]
-          - if staff && !staff.empty?
-            - final_description = ""
-            - staff = staff.gsub("<p>","").gsub("</p>","").gsub("\r\n","").gsub(".info",".box.info").gsub("<br />.colonne",".colonne").gsub("<br />.row",".row").gsub("<br />.box",".box")
-            - tab_of_row = staff.strip.split(".row")
-            - tab_of_row.each do |row|
-              - next if row.gsub("<br />","").empty?
-              - final_description += "<div class='row'>"
-              - tab_of_colonne = row.strip.split(".colonne")
-              - put_padding_on_top = 0
-              - tab_of_colonne.delete_if {|x| x == "" }
-              - if tab_of_colonne.length == 1
-                - put_padding_on_top = 1
-                - final_description += "<div class='span3'>&nbsp</div>"
-              - tab_of_colonne.each do |colonne|
-                - next if colonne.gsub("<br />","").empty?
-                - if put_padding_on_top == 1
-                  - final_description += "<div class='span3'>"
-                - else
-                  - final_description += "<div class='span3' style='padding-top:30px;'>"
-                - put_padding_on_top += 1
-                - put_padding_on_top = 0 if put_padding_on_top == 3
-                - tab_of_box = colonne.split(".box")
-                - tab_of_box.each do |box|
-                  - next if box.gsub("<br />","").empty?
-                  - if box.match(/^.info/)
-                    - box = box.gsub(".info","")
-                    - box = "<div class='info'>"+box+"</div>"
-                  - else
-                    - box = "<div class='box'>"+box+"</div>"
-                  - box = box.gsub("'><br />", "'>")
-                  - final_description += box
-                - final_description += "</div>"
-              - if tab_of_colonne.length == 1
-                - final_description += "<div class='span3'>&nbsp</div>"
-              - final_description += "</div><hr class='separateur'>"
-            = raw(final_description)
+.page-content
+  = render 'refinery/leaders/shared/menu'
+  = render :partial => 'refinery/leaders/shared/power_menu'
+  .directory-content{:rel=>@group.power.short_name,:style=>'border-color:'+@group.power.color}
+    .right-content
+      %div{:style=>'margin-left:auto;margin-right:auto;max-width:500px;text-align:center;'}
+        %div{:style=>'font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}
+          = @group.name
+        %div{:style=>'color:#888;font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}
+          = raw @group.name_english
+        %div{:style=>'color:#888;font-weight:bold;text-transform:uppercase;margin-bottom:10px;'}
+          = raw @group.name_chinese
+      - staff = ""
+      - tab = @group.description.split(".staff")
+      - if tab[0] && !tab[0].match(/^.staff/)
+        = raw tab[0]
+        - staff = tab[1] if tab[1]
+      - else
+        - staff = tab[0]
+      - if staff && !staff.empty?
+        %div
+          &nbsp
+        - final_description = ""
+        - staff = staff.gsub("<p>","").gsub("</p>","").gsub("\r\n","").gsub(".info",".box.info").gsub("<br />.colonne",".colonne").gsub("<br />.row",".row").gsub("<br />.box",".box")
+        - tab_of_row = staff.strip.split(".row")
+        - tab_of_row.each do |row|
+          - next if row.gsub("<br />","").empty?
+          - final_description += "<div class='row-fluid'>"
+          - tab_of_colonne = row.strip.split(".colonne")
+          - put_padding_on_top = 0
+          - tab_of_colonne.delete_if {|x| x == "" }
+          - if tab_of_colonne.length == 1
+            - put_padding_on_top = 1
+            - final_description += "<div class='span4'>&nbsp</div>"
+          - tab_of_colonne.each do |colonne|
+            - next if colonne.gsub("<br />","").empty?
+            - if put_padding_on_top == 1
+              - final_description += "<div class='span4'>"
+            - else
+              - final_description += "<div class='span4' style='padding-top:30px;'>"
+            - put_padding_on_top += 1
+            - put_padding_on_top = 0 if put_padding_on_top == 3
+            - tab_of_box = colonne.split(".box")
+            - tab_of_box.each do |box|
+              - next if box.gsub("<br />","").empty?
+              - if box.match(/^.info/)
+                - box = box.gsub(".info","")
+                - box = "<div class='info'>"+box+"</div>"
+              - else
+                - box = "<div class='box'>"+box+"</div>"
+              - box = box.gsub("'><br />", "'>")
+              - final_description += box
+            - final_description += "</div>"
+          - if tab_of_colonne.length == 1
+            - final_description += "<div class='span4'>&nbsp</div>"
+          - final_description += "</div><hr class='separateur'>"
+        = raw(final_description)
 
-          .group{:style=>'margin-top:20px;'}
-            - @group.individuals.each do |individual|
-              = render :partial => 'refinery/leaders/individuals/individual', :locals => { :individual => individual, :group => @group }
-            - @group.groups.each do |subgroup|
-              = render :partial => 'refinery/leaders/groups/group', :locals => { :group => subgroup }
+      .group{:style=>'margin-top:20px;'}
+        - @group.individuals.each do |individual|
+          = render :partial => 'refinery/leaders/individuals/individual', :locals => { :individual => individual, :group => @group }
+        - @group.groups.each do |subgroup|
+          = render :partial => 'refinery/leaders/groups/group', :locals => { :group => subgroup }

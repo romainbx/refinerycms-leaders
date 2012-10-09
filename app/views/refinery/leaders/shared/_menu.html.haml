@@ -1,7 +1,21 @@
+- current_power_id = (@power && @power.id) || (@group && @group.power && @group.power.id) || 0
 - powers = Refinery::Leaders::Power.all
-%div{:style => 'margin-bottom:0px;background:#BBB;box-shadow:0 -1px 0 #AAA;padding:10px 5px 0;border-radius:5px 5px 0 0;text-align:center;background:url("/assets/grey_top_background.jpg")'}
+%div{:style => 'text-align:center;'}
   - powers.each do |power|
     = link_to refinery.leaders_power_path(power), :class=>'no_deco' do
-      .button_orga_little{:style=>'background:'+power.color}
+      - opacity = ".5"
+      - if current_power_id==power.id
+        - opacity = "1"
+      .button_orga_little{:rel=>power.short_name, :style=>'background:'+power.color+';opacity:'+opacity}
         %div
           = power.short_name ||= power.name
+
+  = link_to  refinery.leaders_individuals_path, :class=>'no_deco' do
+    - opacity = ".5"
+    - if current_power_id == 0
+      - opacity = "1"
+    .button_orga_little{:style=>'background:#AD0634;opacity:'+opacity}
+      %div
+        Dirigeants
+
+= content_for :javascripts, javascript_include_tag('refinery/leaders/leaders')

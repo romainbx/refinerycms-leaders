@@ -1,31 +1,31 @@
-.row
-  .span12
-    = render 'refinery/leaders/shared/menu'
-    .directory-content.individual
-      .row
-        .span3
-          .photo
-            = image_fu @individual.image, Refinery::Images.user_image_sizes["medium".to_sym]
-        .span9
-          .name
-            = @individual.name
-          .name_chinese
-            = @individual.name_chinese
-          .biography
-            = raw @individual.biography
-          %div{:style=>'margin-bottom:10px;font-weight:bold;'}
-            Postes
-          - @individual.group_individuals.each do |gi|
-            - group = gi.group
-            - if group
-              %div{:style=>'height:20px;margin-bottom:2px;'}
-                - if group.power && group.power.color
-                  %div{:style=>'float:left;margin-right:5px;margin-top:4px;border-radius:5px;width:10px;height:10px;background:'+group.power.color}
-                %i.icon-th
-                - title = group.name
-                - title = gi.role+", "+title if gi.role
-                = link_to title, refinery.leaders_group_path(group)
-                %i
-                  (
-                  = group.power.name
-                  )
+.page-content
+  = render 'refinery/leaders/shared/menu'
+  = render :partial => 'refinery/leaders/shared/power_menu'
+  .directory-content.individual{:rel=>''}
+    .photo{:style=>'text-align:center;float:left;'}
+      = image_fu @individual.image, Refinery::Images.user_image_sizes["medium".to_sym]
+    .right-content{:style=>'margin-left:200px;'}
+      .name
+        = @individual.name
+      .name_chinese
+        = @individual.name_chinese
+      .biography
+        = raw @individual.biography
+      %div{:style=>'margin-bottom:10px;font-weight:bold;'}
+        Postes
+      - @individual.group_individuals.each do |gi|
+        - group = gi.group
+        - if group
+          %div{:style=>'height:20px;margin-bottom:2px;'}
+            - if group.power && group.power.color
+              %div{:style=>'float:left;margin-right:5px;margin-top:4px;width:10px;height:10px;background:'+group.power.color}
+            %i.icon-th
+            - title = group.name
+            - title = gi.role+", "+title if gi.role
+            = link_to title, refinery.leaders_group_path(group)
+            %i
+              (
+              = group.power.name
+              )
+
+= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders')

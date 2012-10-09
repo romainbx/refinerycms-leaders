@@ -1,0 +1,9 @@
+.page-content
+  = render 'refinery/leaders/shared/menu'
+  = render :partial => 'refinery/leaders/shared/power_menu'
+  .directory-content
+    - @individuals.each do |individual|
+      %div
+        = individual.name
+
+= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders')

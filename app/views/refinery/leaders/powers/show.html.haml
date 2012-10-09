@@ -1,11 +1,28 @@
-.row
-  .span12
-    = render 'refinery/leaders/shared/menu'
-    .directory-content
-      .row
-        .span3
-          = render :partial => 'refinery/leaders/shared/power_menu', :locals => {:power => @power, :groups => @groups}
-        .span9
-          %div{:style=>'text-align:center;text-transform:uppercase;font-weight:bold;margin-bottom:20px;'}
-            = @power.name
-          = raw @power.description
+- i_power = @power
+.page-content
+  = render 'refinery/leaders/shared/menu'
+  = render :partial => 'refinery/leaders/shared/power_menu'
+  .directory-content{:rel=>i_power.short_name, :style=>'border-color:'+i_power.color}
+    .right-content
+      %div{:style=>'padding-bottom:20px;text-transform:uppercase;font-weight:bold;text-align:center;'}
+        %div{:style=>'box-shadow:0px 1px 1px #FFF;display:inline-block;width:10px;height:10px;background:'+i_power.color}
+        = i_power.name
+      = raw i_power.description
+      %hr.separateur
+      .directory-menu-button{:style=>'padding-top:5px;border-top:1px dotted '+i_power.color+';border-bottom-color:'+i_power.color}
+        - if i_power.page_organigramme && !i_power.page_organigramme.empty?
+          %i.icon-retweet
+          = link_to 'Organigrammes', refinery.leaders_path(i_power), :class => 'directory-menu-link'
+        - if i_power.map
+          %i.icon-globe
+          = link_to 'Carte', refinery.leaders_powers_map_path(i_power), :class => 'directory-menu-link'
+      - i_power.groups.each do |group|
+        - next if group.group_id
+        .directory-menu-button{:style=>'border-bottom-color:'+i_power.color}
+          %i.icon-th
+          = link_to group.name, refinery.leaders_group_path(group), :class => 'directory-menu-link'
+          - if group.groups.any?
+            - group.groups.each do |subgroup|
+              %div{:style=>'margin:5px 15px;'}
+                %i.icon-th
+                = link_to subgroup.name, refinery.leaders_group_path(subgroup), :class => 'directory-menu-link'

@@ -2,7 +2,62 @@
  *= require jquery.ui.all
  */
 
- @import "chosen";
+@import "chosen";
+@import "bourbon";
+
+.page-content {
+  width:940px;//1170px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.directory-content {
+  background:#EEE;
+  border: 5px solid #AD0634;
+  padding:20px;
+  overflow:auto;
+  position:relative;
+}
+
+.group {
+  a:hover {
+    text-decoration:none;
+  }
+  text-align:center;
+  .individual {
+    width:115px;
+    display:inline-block;
+    margin-bottom:20px;
+    vertical-align:top;
+    img {
+      border:3px solid white;
+    }
+  }
+}
+
+.individual {
+  .photo {
+    text-align:center;
+    img {
+      border:5px solid white;
+    }
+  }
+  .name, .name_chinese, .biography {
+  }
+  .name {
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:5px;
+  }
+  .name_chinese {
+    font-size:16px;
+    margin-bottom:20px;
+  }
+}
+
+.right-content {
+  //margin-left:240px;
+}
 
 a.chzn-single {
   border:1px solid #7F9DB9!important;
@@ -60,4 +115,101 @@ a.chzn-single {
   max-width:200px;
   margin-left:auto;
   margin-right:auto;
+}
+
+.button_orga {
+  text-align:center;
+  padding:5px;
+  min-height:80px;
+  color:#FFF;
+  text-shadow:none;
+  box-shadow:none;
+  margin-bottom:4px;
+  > div {
+    margin-top:4px;
+  }
+}
+
+.button_orga_little {
+  display:inline-block;
+  text-align:center;
+  height:50px;
+  color:#FFF;
+  text-shadow:none;
+  width:114px;
+  line-height:35px;
+  opacity:.5;
+  text-shadow: 0 1px 0 #666666;
+  font-weight:bold;
+  @include transition (all 0.4s ease-in-out);
+  > div {
+    margin-top:5px!important;
+  }
+}
+
+.button_orga_little:hover {
+  opacity:1!important;
+}
+
+.floating-menu {
+  display:none;
+  position:absolute;
+  top:-5px;
+  background:white;
+  border:5px solid;
+  border-left-width:1px;
+  border-right-width:1px;
+  border-bottom-width:1px;
+  border-color:#FFF;
+  padding:10px;
+  z-index:999;
+  @include transition (all 0.4s ease-in-out);
+}
+
+.pcc {
+  background:#CD2121;
+  //@include background(linear-gradient(#CD2121, #9E1919) top repeat);
+  > div {
+    margin-top:10px;
+  }
+}
+.ccppc {
+  background:#F56E00;
+  //@include background(linear-gradient(#F56E00, #CC5C00) top repeat);
+  > div {
+    margin-top:3px;
+  }
+}
+.apn {
+  background:#F3BD00;
+  //@include background(linear-gradient(#F3BD00, #BF9500) top repeat);
+  > div {
+    margin-top:10px;
+  }
+}
+.gouv-central {
+  font-size:14px;
+  background:#0D88E4;
+  //@include background(linear-gradient(#0D88E4, #095D9C) top repeat);
+}
+.gouv-locaux {
+  font-size:14px;
+  background:#78B31D;
+  //@include background(linear-gradient(#78B31D, #4D7312) top repeat);
+  > div {
+    margin-top:20px;
+  }
+}
+.diplo {
+  font-size:14px;
+  background:#BD4197;
+  //@include background(linear-gradient(#BD4197, #7A2A62) top repeat);
+}
+.cour {
+  font-size:14px;
+  background:#798381;
+  //@include background(linear-gradient(#798381, #4C5250) top repeat);
+  > div {
+    margin-top:8px;
+  }
 }

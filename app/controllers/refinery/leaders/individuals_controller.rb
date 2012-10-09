@@ -6,7 +6,7 @@ module Refinery
       #before_filter :find_page
 
       def index
-
+        @individuals = Refinery::Leaders::Individual.all
       end
 
       def show

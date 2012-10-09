@@ -2,6 +2,8 @@ module Refinery
   module Leaders
     class GroupsController < ::ApplicationController
 
+      layout 'application'
+
       def index
 
       end

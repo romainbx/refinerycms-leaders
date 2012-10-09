@@ -3,6 +3,28 @@
 
 $(document).ready(function(){
 
+
+  $('.button_orga_little').mouseover(function(){
+    $('.floating-menu[rel="'+$(this).attr('rel')+'"]').css('top', $(this).position().top + parseInt($(this).css('height').replace('px', '')));
+    $('.floating-menu[rel="'+$(this).attr('rel')+'"]').css('left', $(this).position().left);
+    $('.floating-menu[rel="'+$(this).attr('rel')+'"]').css('display', 'block');
+  });
+
+  $('.floating-menu').mouseover(function(){
+    $(this).css('display', 'block');
+    $('.button_orga_little[rel="'+$(this).attr('rel')+'"]').css('opacity', '1');
+  });
+
+  $('.button_orga_little').mouseout(function(){
+    $('.floating-menu').css('display', 'none');
+  });
+
+  $('.floating-menu').mouseout(function(){
+    $(this).css('display', 'none');
+    if ($('.directory-content').attr('rel') != $(this).attr('rel'))
+      $('.button_orga_little[rel="'+$(this).attr('rel')+'"]').css('opacity', '.5');
+  });
+
   $(".chzn-select").chosen();
 
   var img = $("#map img")[0];
@@ -23,7 +45,7 @@ $(document).ready(function(){
           $('#map').append('<a href="/leaders/groups/'+thiss['group_id']+'"><div class="link-on-map" style="font-size:10px;width:'+width+'px;height:'+height+'px;top:'+topX+'px;left:'+left+'px;position:absolute;">&nbsp</div></a>');
         };
       }
-      
+
       putStaticMapLinks (static_map_links);
 
       if(typeof admin_map_links != 'undefined')
