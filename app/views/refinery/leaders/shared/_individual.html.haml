@@ -1,2 +1,12 @@
-%div
-  = individual.name
+%div{:style=>'margin-bottom:5px;overflow: auto;border-bottom:1px solid #CCC;padding-bottom:5px;'}
+  = link_to refinery.leaders_individual_path(individual) do
+    = image_fu individual.image, Refinery::Images.user_image_sizes["small".to_sym], :style=>'margin-right:10px;height:60px;width:auto;float:left;'
+  %div{:style=>'font-size:14px'}
+    %strong
+      = link_to individual.name, refinery.leaders_individual_path(individual)
+  %div
+    = link_to individual.name_chinese, refinery.leaders_individual_path(individual)
+  - individual.groups.each do |group|
+    %div{:rel=>'tooltip', :title=>group.power.short_name+' - '+group.name, :style=>'display:inline-block;width:10px;height:10px;background:'+group.power.color}
+    = link_to refinery.leaders_group_path(group) do
+      = group.power.short_name+' - '+group.name

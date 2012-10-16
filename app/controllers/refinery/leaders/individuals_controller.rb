@@ -6,7 +6,7 @@ module Refinery
       #before_filter :find_page
 
       def index
-        @individuals = Refinery::Leaders::Individual.limit(30).page(params[:page])
+        @individuals = Refinery::Leaders::Individual.limit(20).page(params[:page])
       end
 
       def show
