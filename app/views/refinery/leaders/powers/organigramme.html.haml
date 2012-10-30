@@ -4,7 +4,7 @@
   = render :partial => 'refinery/leaders/shared/power_menu'
   .directory-content{:rel=>@power.short_name, :style=>'border-color:'+@power.color}
     .right-content
-      = raw(page.content_for(:body).gsub("[[", "<").gsub("]]", ">"))
+      = raw(page.content_for(:body).gsub("[[chart", "<div class='chart_box'").gsub("]]", "></div>"))
 
 = javascript_tag do
   window.map_links = #{raw @map_links.to_json}

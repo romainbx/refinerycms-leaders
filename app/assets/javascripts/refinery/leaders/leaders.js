@@ -36,17 +36,22 @@ $(document).ready(function(){
 
         for (i=0; i<map_links.length; i++)
         {
+
           thiss = map_links[i];
+
           topX = (thiss['top'] * ratio);
           left = (thiss['left'] * ratio);
           width = (thiss['width'] * ratio)+2;
           height = (thiss['height'] * ratio)+2;
 
-          $('#map').append('<a href="/leaders/groups/'+thiss['group_id']+'"><div class="link-on-map" style="font-size:10px;width:'+width+'px;height:'+height+'px;top:'+topX+'px;left:'+left+'px;position:absolute;">&nbsp</div></a>');
+          $div = $('<div class="link-on-map" style="border:1px solid white;font-size:10px;width:'+width+'px;height:'+height+'px;top:'+topX+'px;left:'+left+'px;position:absolute;">&nbsp</div>');
+          $link = $('<a style="width:'+width+'px;height:'+height+'px;" href="/leaders/groups/'+thiss['group_id']+'"></a>');
+          $link.append($div);
+          $('#map').append($link);
         };
       }
-
-      putStaticMapLinks (static_map_links);
+      if (typeof static_map_links != 'undefined')
+        putStaticMapLinks (static_map_links);
 
       if(typeof admin_map_links != 'undefined')
       {
@@ -101,8 +106,8 @@ $(document).ready(function(){
           $('#map > img').remove();
           $('#map').append('<img src="'+result+'">');
           img = $("#map img")[0];
-
-          putStaticMapLinks (static_map_links);
+          if (typeof static_map_links != 'undefined')
+            putStaticMapLinks (static_map_links);
         });
       }
     }
@@ -132,8 +137,20 @@ $(document).ready(function(){
     }
   }
 
+  function getNatural (DOMelement) {
+      var img = new Image();
+      img.src = DOMelement.src;
+      return {width: img.width, height: img.height};
+  }
+
   var getRatio = function() {
-    ratio = img.width / img.naturalWidth;
+    naturalWidth = img.naturalWidth;
+    if(typeof naturalWidth == "undefined")
+    {
+      natural = getNatural(img);
+      naturalWidth = natural.width;
+    }
+    ratio = img.width / naturalWidth;
     return ratio;
   }
 
