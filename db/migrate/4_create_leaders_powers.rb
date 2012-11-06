@@ -8,6 +8,7 @@ class CreateLeadersPowers < ActiveRecord::Migration
       t.string :page_organigramme
       t.text :description
       t.integer :map_id
+      t.integer :position
       t.timestamps
     end
 

@@ -11,14 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706005240) do
-
-  create_table "refinery_groups", :force => true do |t|
-    t.string   "name"
-    t.integer  "position"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 20121106062455) do
 
   create_table "refinery_images", :force => true do |t|
     t.string   "image_mime_type"
@@ -30,6 +23,80 @@ ActiveRecord::Schema.define(:version => 20120706005240) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  create_table "refinery_leaders_groups", :force => true do |t|
+    t.string   "name"
+    t.string   "name_english"
+    t.string   "name_chinese"
+    t.integer  "group_id"
+    t.integer  "power_id"
+    t.text     "description"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "refinery_leaders_groups", ["group_id"], :name => "index_refinery_leaders_groups_on_group_id"
+  add_index "refinery_leaders_groups", ["power_id"], :name => "index_refinery_leaders_groups_on_power_id"
+
+  create_table "refinery_leaders_groups_individuals", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "individual_id"
+    t.string   "role"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "refinery_leaders_groups_individuals", ["group_id"], :name => "index_refinery_leaders_groups_individuals_on_group_id"
+  add_index "refinery_leaders_groups_individuals", ["individual_id"], :name => "index_refinery_leaders_groups_individuals_on_individual_id"
+
+  create_table "refinery_leaders_individuals", :force => true do |t|
+    t.string   "name"
+    t.string   "name_chinese"
+    t.text     "biography"
+    t.integer  "image_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "refinery_leaders_individuals", ["image_id"], :name => "index_refinery_leaders_individuals_on_image_id"
+
+  create_table "refinery_leaders_map_links", :force => true do |t|
+    t.string   "name"
+    t.integer  "top"
+    t.integer  "left"
+    t.integer  "group_id"
+    t.integer  "width",      :default => 100
+    t.integer  "height",     :default => 20
+    t.integer  "map_id"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "refinery_leaders_map_links", ["group_id"], :name => "index_refinery_leaders_map_links_on_group_id"
+  add_index "refinery_leaders_map_links", ["map_id"], :name => "index_refinery_leaders_map_links_on_map_id"
+
+  create_table "refinery_leaders_maps", :force => true do |t|
+    t.string   "name"
+    t.integer  "image_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "refinery_leaders_maps", ["image_id"], :name => "index_refinery_leaders_maps_on_image_id"
+
+  create_table "refinery_leaders_powers", :force => true do |t|
+    t.string   "name"
+    t.string   "short_name"
+    t.string   "color"
+    t.string   "page_organigramme"
+    t.text     "description"
+    t.integer  "map_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "position",          :default => 0
+  end
+
+  add_index "refinery_leaders_powers", ["map_id"], :name => "index_refinery_leaders_powers_on_map_id"
 
   create_table "refinery_page_part_translations", :force => true do |t|
     t.integer  "refinery_page_part_id"
@@ -139,10 +206,8 @@ ActiveRecord::Schema.define(:version => 20120706005240) do
     t.datetime "created_at",             :null => false
     t.datetime "updated_at",             :null => false
     t.string   "slug"
-    t.integer  "group_id"
   end
 
-  add_index "refinery_users", ["group_id"], :name => "index_refinery_users_on_group_id"
   add_index "refinery_users", ["id"], :name => "index_refinery_users_on_id"
   add_index "refinery_users", ["slug"], :name => "index_refinery_users_on_slug"
 
