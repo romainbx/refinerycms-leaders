@@ -61,3 +61,4 @@
           = render :partial => 'refinery/leaders/individuals/individual', :locals => { :individual => individual, :group => @group }
         - @group.groups.each do |subgroup|
           = render :partial => 'refinery/leaders/groups/group', :locals => { :group => subgroup }
+    = render 'refinery/leaders/shared/footer'

@@ -5,6 +5,7 @@
     .right-content
       %div#map
         = image_fu @power.map.image
+    = render 'refinery/leaders/shared/footer'
 
 = javascript_tag do
   window.map_links = #{raw @map_links.to_json}

@@ -6,6 +6,7 @@
       #individuals
         = render :partial => "/refinery/leaders/shared/individuals", :locals => {:individuals => @individuals}
       = will_paginate @individuals
+    = render 'refinery/leaders/shared/footer'
 
 = content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders')
 = content_for :javascripts, javascript_include_tag('refinery/leaders/individuals')
