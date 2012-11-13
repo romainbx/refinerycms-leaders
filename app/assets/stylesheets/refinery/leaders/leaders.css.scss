@@ -11,8 +11,26 @@
   margin-right:auto;
 }
 
+.fullscreen-button {
+  background: none repeat scroll 0 0 #fff;
+  border: 1px solid #888888;
+  float: right;
+  font-size: 12px;
+  font-weight: bold;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  a {
+    text-decoration:none;
+  }
+}
+
+.fullscreen-button:hover {
+  background:#E6E5C5;
+}
+
 .directory-content {
-  background:#EEEEE0;
   border: 5px solid #AD0634;
   padding:20px;
   overflow:auto;

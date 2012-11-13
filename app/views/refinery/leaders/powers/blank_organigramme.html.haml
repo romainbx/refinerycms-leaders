@@ -1,0 +1,2 @@
+- page = Refinery::Page.find_by_slug(@power.page_organigramme)
+= raw(page.content_for(:body).gsub("[[chart", "<div class='chart_box'").gsub("]]", "></div>"))

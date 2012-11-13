@@ -10,6 +10,10 @@ module Refinery
       def organigramme
         @power = Refinery::Leaders::Power.find(params[:id])
         @groups = Refinery::Leaders::Group.where(:power_id => params[:id])
+
+        if params.has_key? :blank
+          render :blank_organigramme, :layout => 'blank'
+        end
       end
 
       def map

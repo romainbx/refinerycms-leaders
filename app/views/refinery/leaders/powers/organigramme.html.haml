@@ -3,6 +3,11 @@
   = render 'refinery/leaders/shared/menu'
   = render :partial => 'refinery/leaders/shared/power_menu'
   .directory-content{:rel=>@power.short_name, :style=>'border-color:'+@power.color}
+    = link_to refinery.leaders_path(@power)+'?blank' do
+      .fullscreen-button
+        %i.icon-fullscreen
+        'Pleine page'
+
     .right-content
       = raw(page.content_for(:body).gsub("[[chart", "<div class='chart_box'").gsub("]]", "></div>"))
     = render 'refinery/leaders/shared/footer'
