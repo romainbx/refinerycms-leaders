@@ -5,7 +5,6 @@
     - individual.groups.each do |group|
       %div{:rel=>'tooltip', :title=>group.power.short_name+' - '+group.name, :style=>'display:inline-block;width:10px;height:10px;background:'+group.power.color}
   %div
-    %i.icon-user
     = link_to individual.name, refinery.leaders_individual_path(individual)
     %br
     = link_to individual.name_chinese, refinery.leaders_individual_path(individual)

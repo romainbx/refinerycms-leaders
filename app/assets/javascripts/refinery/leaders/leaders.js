@@ -3,6 +3,18 @@
 
 $(document).ready(function(){
 
+  $('#edit_role_individuals').sortable({
+    handle:".handle",
+    update: function() {
+      var positions = $(this).sortable('toArray');
+
+      for (var i=0; i<positions.length; i++)
+      {
+        gi_id = positions[i].substr(positions[i].indexOf('_')+1);
+        $('input#'+gi_id+'_position').val(i);
+      }
+    }
+  });
 
   $('.button_orga_little').mouseover(function(){
     $('.floating-menu[rel="'+$(this).attr('rel')+'"]').css('top', $(this).position().top + parseInt($(this).css('height').replace('px', '')));

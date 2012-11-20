@@ -2,10 +2,44 @@
   = render 'refinery/leaders/shared/menu'
   = render :partial => 'refinery/leaders/shared/power_menu'
   .directory-content
-    - if @individuals.any?
+    %div{:style=>'font-size:24px;font-weight:bold;margin-bottom:20px;'}
+      Index
+    %div{:style=>'margin-bottom:10px;'}
+      %i.icon-list-alt
+      = link_to "Afficher par type d'administration", '/leaders/individuals'
+    %div
+      %i.icon-list-alt
+      = link_to 'Afficher par ordre alphabétique', '/leaders/individuals?alpha'
+    %hr
+    - if @individuals && @individuals.any?
+      #letters{:style=>'font-size:15px;text-align:center;margin-bottom:20px;'}
+        - letter = ""
+        - @individuals.each do |indi|
+          - if letter != indi.name[0]
+            %a{:href=>'#'+indi.name[0], :style=>'color:#AD0634!important;'}
+              = indi.name[0]
+            |
+            - letter = indi.name[0]
       #individuals
         = render :partial => "/refinery/leaders/shared/individuals", :locals => {:individuals => @individuals}
-      = will_paginate @individuals
+      -#= will_paginate @individuals
+    - if @powers && @powers.any?
+      - @powers.each do |power|
+        %div{:style=>'margin-bottom:30px;'}
+          %div{:style=>'text-transform:uppercase;font-size:15px;margin-bottom:20px;'}
+            = link_to power.name, refinery.leaders_power_path(power), :style=>'color:#AD0634!important;'
+          - power.groups.each do |group|
+            %ul{:style=>'list-style-type:disc;'}
+              %li
+                %div{:style=>'font-weight:bold;'}
+                  = link_to group.name, refinery.leaders_group_path(group)
+                - group.group_individuals.each do |gi|
+                  %ul{:style=>'list-style-type:circle;'}
+                    %li
+                      = link_to gi.individual.name, refinery.leaders_individual_path(gi.individual), :style=>'color:#AD0634!important;'
+                      - if !gi.role.blank?
+                        %span{:style=>'color:#888;font-style:italic;'}
+                          = "(#{gi.role})"
     = render 'refinery/leaders/shared/footer'
 
 = content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders')

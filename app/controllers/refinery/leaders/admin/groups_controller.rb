@@ -58,7 +58,7 @@ module Refinery
         def update_roles
           @group = Refinery::Leaders::Group.find(params[:id])
           @group.group_individuals.each do |gi|
-            gi.update_attributes(:role => params[gi.individual_id.to_s+"_role"])
+            gi.update_attributes(:role => params[gi.individual_id.to_s+"_role"], :position => params[gi.individual_id.to_s+"_position"])
           end
           redirect_to refinery.leaders_admin_groups_path
         end

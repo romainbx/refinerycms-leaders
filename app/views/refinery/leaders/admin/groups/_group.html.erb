@@ -15,6 +15,6 @@
     <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_leaders_admin_group_path(group),
          :title => t('.edit') if current_refinery_user.has_role?("Refinery") %>
     <%= link_to refinery_icon_tag("user_edit.png"), refinery.edit_roles_leaders_admin_group_path(group),
-      :title => 'Roles', :class => "show_group" %>
+      :title => 'Roles et positions', :class => "show_group" %>
   </span>
 </li>
