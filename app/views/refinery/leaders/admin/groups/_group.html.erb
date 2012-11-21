@@ -4,8 +4,13 @@
     <%= truncate(group.name, :length => 65, :omission => '...') %>
   </span>
   <span class="preview">
-      | <%= group.individuals.count %> membres
-    </span>
+    | <%= group.individuals.count %> membres
+  </span>
+  <% if group.position != 99 %>
+  <span class="preview">
+    | Position : <%= group.position %>
+  </span>
+  <% end %>
   <span class='actions'>
     <%= link_to refinery_icon_tag("delete.png"), refinery.leaders_admin_group_path(group),
         :class => "cancel confirm-delete delete_group",
