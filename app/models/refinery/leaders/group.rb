@@ -4,9 +4,9 @@ module Refinery
       include ActionView::Helpers::TextHelper
       self.table_name = 'refinery_leaders_groups'
 
-      default_scope :order => 'name ASC'
+      default_scope :order => 'position ASC, name ASC'
 
-      attr_accessible :name, :name_chinese, :name_english, :description
+      attr_accessible :name, :name_chinese, :name_english, :description, :position
 
       belongs_to :power, :class_name => 'Refinery::Leaders::Power', :foreign_key => :power_id
       belongs_to :group, :class_name => 'Refinery::Leaders::Group', :foreign_key => :group_id

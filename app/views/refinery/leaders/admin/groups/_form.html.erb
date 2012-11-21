@@ -30,6 +30,11 @@
     <%= f.text_area :description, :rows => 10, :class => 'wymeditor widest'-%>
   </div>
 
+  <div class='field'>
+    <%= f.label :position -%>
+    <%= f.text_field :position  -%>
+  </div>
+
   <%= f.hidden_field :individuals, :value => @group.individual_ids.join(",") %>
   <%= render "individuals" %>
 

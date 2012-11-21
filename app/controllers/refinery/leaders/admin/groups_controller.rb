@@ -31,6 +31,7 @@ module Refinery
           group.description = params[:group][:description]
           group.power_id = params[:power_id]
           group.group_id = params[:group_id]
+          group.position = params[:position]
           ids = params[:group][:individuals].split(',')
           group.individuals = Refinery::Leaders::Individual.find(ids)
           group.save!
@@ -43,6 +44,7 @@ module Refinery
           group.description = params[:group][:description]
           group.name_english = params[:group][:name_english]
           group.name_chinese = params[:group][:name_chinese]
+          group.position = params[:group][:position]
           group.power_id = params[:power_id]
           group.group_id = params[:group_id]
           ids = params[:group][:individuals].split(',')
