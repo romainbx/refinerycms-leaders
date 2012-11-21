@@ -19,6 +19,7 @@
           %div{:style=>'height:20px;margin-bottom:2px;'}
             - if group.power && group.power.color
               %div{:style=>'float:left;margin-right:5px;margin-top:4px;width:10px;height:10px;background:'+group.power.color}
+            %i.icon-th
             - title = group.name
             - title = gi.role+", "+title if gi.role
             = link_to title, refinery.leaders_group_path(group)
