@@ -1,2 +1,8 @@
+= link_to refinery.leaders_path(@power) do
+  .fullscreen-button{:style=>'margin:20px'}
+    %i.icon-arrow-left
+    Retour
 - page = Refinery::Page.find_by_slug(@power.page_organigramme)
 = raw(page.content_for(:body).gsub("[[chart", "<div class='chart_box'").gsub("]]", "></div>"))
+
+= content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders')
