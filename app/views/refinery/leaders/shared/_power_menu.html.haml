@@ -20,4 +20,12 @@
             %div{:style=>'margin:5px 15px;'}
               = link_to subgroup.name, refinery.leaders_group_path(subgroup), :class => 'directory-menu-link'
 
+- help_menu = Refinery::Page.where(:menu_match => "^/help_menu?(/|/.+?|)$").first.content_for(:body)
+.floating-menu{:rel=>t('refinery.leaders.menu.help'), :style=>'border-color:#AD0634'}
+  %div{:style=>'padding-bottom:20px;text-transform:uppercase;font-weight:bold;border-bottom:1px dotted #AD0634'}
+    %div{:style=>'box-shadow:0px 1px 1px #FFF;display:inline-block;width:10px;height:10px;background:#AD0634'}
+    = t('refinery.leaders.menu.help')
+  .help_menu
+    = raw help_menu
+
 = content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders')

@@ -10,12 +10,12 @@
         %div
           = power.short_name ||= power.name
 
-  = link_to  refinery.leaders_individuals_path, :class=>'no_deco' do
+  = link_to refinery.leaders_individuals_path, :class=>'no_deco' do
     - opacity = ".5"
     - if current_power_id == 0
       - opacity = "1"
-    .button_orga_little{:style=>'background:#AD0634;opacity:'+opacity}
+    .button_orga_little{:style=>'background:#AD0634;opacity:'+opacity, :rel=>t('refinery.leaders.menu.help')}
       %div
-        Index
+        = t('refinery.leaders.menu.help')
 
 = content_for :javascripts, javascript_include_tag('refinery/leaders/leaders')

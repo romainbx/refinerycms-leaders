@@ -2,11 +2,7 @@ namespace :refinery do
 
   namespace :leaders do
 
-    # call this task by running: rake refinery:leaders:my_task
-    # desc "Description of my task below"
-    # task :my_task => :environment do
-    #   # add your logic here
-    # end
+    I18n.locale = :fr
 
     task :init_refinery => :environment do
       help_menu = Refinery::Page.create!({

@@ -6,6 +6,8 @@ fr:
       groups:
         title: Groups
     leaders:
+      menu:
+        help: Aide
       admin:
         actions:
           create_new: Nouveau
