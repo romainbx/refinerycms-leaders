@@ -57,7 +57,7 @@ $(document).ready(function(){
           height = (thiss['height'] * ratio)+2;
 
           $div = $('<div class="link-on-map" style="border:1px solid white;font-size:10px;width:'+width+'px;height:'+height+'px;top:'+topX+'px;left:'+left+'px;position:absolute;">&nbsp</div>');
-          $link = $('<a style="left:0;position:absolute;top:0;display:block;width:'+width+'px;height:'+height+'px;" href="/leaders/groups/'+thiss['group_id']+'"></a>');
+          $link = $('<a style="left:0;position:absolute;top:0;display:block;width:'+width+'px;height:'+height+'px;" href="/leaders/groups/'+thiss['group_id']+'">...</a>');
           $div.append($link);
           $('#map').append($div);
         };
