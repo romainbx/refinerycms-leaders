@@ -91,7 +91,7 @@
   opacity:.4;
   text-shadow:none;
   font-size:14px;
-  @include border-radius(5px);
+  border-radius:5px;
 }
 .link-on-map-admin-static:hover {
   background:black;
