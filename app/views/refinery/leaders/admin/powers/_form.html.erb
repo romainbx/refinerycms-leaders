@@ -22,7 +22,7 @@
 
   <div class='field'>
     <label><i class="icon-globe"></i> Carte</label>
-    <%= select_tag 'power[map_id]', options_from_collection_for_select(Refinery::Leaders::Map.all, 'id', 'name', @power.map_id), :include_blank => true, :class => 'chzn-select' %>
+    <%= select_tag 'power[map_id]', options_from_collection_for_select(Refinery::Leaders::Map.all, 'id', 'name', @power.map_id), :include_blank => true %>
   </div>
 
   <div class='field'>
