@@ -3,6 +3,87 @@
 
 $(document).ready(function(){
 
+  img = $('#map img')[0]
+
+  if (img == undefined)
+  {
+    var imgUrl = $('#map').css('background-image');
+    imgUrl = imgUrl.substring(4, imgUrl.length-1);
+    //imgUrl = imgUrl.replace(/\"/g,'');
+    var img = new Image();
+    img.src = "/system/images/BAhbBlsHOgZmSSIuMjAxMy8wMS8xNi8xNF8xOV8yOF85NDdfbWFwX2NoaW5hXzg5MC5wbmcGOgZFVA/map_china_890.png";
+    $("#map").css('width', img.width);
+    $("#map").css('height', img.height);
+  }
+
+  function getNatural (DOMelement) {
+      var tmp = new Image();
+      tmp.src = DOMelement.src;
+      return {width: tmp.width, height: tmp.height};
+  }
+
+  var getRatio = function(tmp) {
+    naturalWidth = tmp.naturalWidth;
+    if(typeof naturalWidth == "undefined")
+    {
+      natural = getNatural(tmp);
+      naturalWidth = natural.width;
+    }
+    ratio = tmp.width / naturalWidth;
+    return ratio;
+  }
+
+  var putStaticMapLinks = function(list) {
+
+    $('.link-on-map-admin-static').remove();
+    if(typeof list != 'undefined')
+    {
+      ratio = getRatio(img);
+
+      for (i=0; i<list.length; i++)
+      {
+        thiss = list[i];
+
+        if (thiss['map_id'] == $('#map_link_map_id').val())
+        {
+          topX = (thiss['top'] * ratio);
+          left = (thiss['left'] * ratio);
+          width = (thiss['width'] * ratio)+4;
+          height = (thiss['height'] * ratio)+4;
+
+          $('#click-map').append('<div class="link-on-map-admin-static" style="width:'+width+'px;height:'+height+'px;top:'+topX+'px;left:'+left+'px;position:absolute;">'+thiss['name']+'</div>');
+        }
+      };
+    }
+  }
+
+  var addEvents = function(add_to) {
+    $(add_to).resizable({
+      stop: function(e, ui) {
+
+        ratio = getRatio(img);
+
+        $('input[id=map_link_width]').val(Math.floor(ui.size.width / ratio));
+        $('input[id=map_link_height]').val(Math.floor(ui.size.height / ratio));
+      }
+    });
+    $(add_to).draggable({
+      stop: function(e, ui) {
+
+        ratio = getRatio(img);
+
+        //var parentOffset = $(this).parent().offset();
+        var unrelX = ui.position.left;//e.pageX - parentOffset.left;
+        var unrelY = ui.position.top;//e.pageY - parentOffset.top;
+        var relX = unrelX / ratio;
+        var relY = unrelY / ratio;
+        $('input[id=map_link_top]').val(Math.floor(relY));
+        $('input[id=map_link_left]').val(Math.floor(relX));
+      }
+    });
+  }
+
+
   $('#edit_role_individuals').sortable({
     handle:".handle",
     update: function() {
@@ -39,12 +120,14 @@ $(document).ready(function(){
 
   $(".chzn-select").chosen();
 
-  var img = $("#map img")[0];
+  //var img = $("#map img")[0];
   if (img != undefined) {
-    img.onload = function() {
+
+    //img.onload = function() {
+
       if(typeof map_links != 'undefined')
       {
-        ratio = getRatio();
+        ratio = getRatio(img);
 
         for (i=0; i<map_links.length; i++)
         {
@@ -56,18 +139,17 @@ $(document).ready(function(){
           width = (thiss['width'] * ratio)+2;
           height = (thiss['height'] * ratio)+2;
 
-          $div = $('<div class="link-on-map" style="border:1px solid white;font-size:10px;width:'+width+'px;height:'+height+'px;top:'+topX+'px;left:'+left+'px;position:absolute;">&nbsp</div>');
-          $link = $('<a style="left:0;position:absolute;top:0;display:block;width:'+width+'px;height:'+height+'px;" href="/leaders/groups/'+thiss['group_id']+'"></a>');
-          $div.append($link);
-          $('#map').append($div);
+          $link = $('<a class="link-on-map" style="top:'+topX+'px;left:'+left+'px;position:absolute;display:block;width:'+width+'px;height:'+height+'px;" href="/leaders/groups/'+thiss['group_id']+'">&nbsp</a>');
+          $('#map').append($link);
         };
       }
+
       if (typeof static_map_links != 'undefined')
         putStaticMapLinks (static_map_links);
 
       if(typeof admin_map_links != 'undefined')
       {
-        ratio = getRatio();
+        ratio = getRatio(img);
 
         for (i=0; i<admin_map_links.length; i++)
         {
@@ -82,14 +164,14 @@ $(document).ready(function(){
           addEvents('.link-on-map-admin');
         };
       }
-    }
+    //}
   }
 
   $('#click-map').click(function(e){
 
     $('.link-on-map-admin').remove();
 
-    ratio = getRatio();
+    ratio = getRatio(img);
 
     var parentOffset = $(this).parent().offset();
     var unrelX = e.pageX - parentOffset.left;
@@ -125,70 +207,4 @@ $(document).ready(function(){
     }
   });
 
-  var putStaticMapLinks = function(list) {
-
-    $('.link-on-map-admin-static').remove();
-    if(typeof list != 'undefined')
-    {
-      ratio = getRatio();
-
-      for (i=0; i<list.length; i++)
-      {
-        thiss = list[i];
-
-        if (thiss['map_id'] == $('#map_link_map_id').val())
-        {
-          topX = (thiss['top'] * ratio);
-          left = (thiss['left'] * ratio);
-          width = (thiss['width'] * ratio)+4;
-          height = (thiss['height'] * ratio)+4;
-
-          $('#click-map').append('<div class="link-on-map-admin-static" style="width:'+width+'px;height:'+height+'px;top:'+topX+'px;left:'+left+'px;position:absolute;">'+thiss['name']+'</div>');
-        }
-      };
-    }
-  }
-
-  function getNatural (DOMelement) {
-      var img = new Image();
-      img.src = DOMelement.src;
-      return {width: img.width, height: img.height};
-  }
-
-  var getRatio = function() {
-    naturalWidth = img.naturalWidth;
-    if(typeof naturalWidth == "undefined")
-    {
-      natural = getNatural(img);
-      naturalWidth = natural.width;
-    }
-    ratio = img.width / naturalWidth;
-    return ratio;
-  }
-
-  var addEvents = function(add_to) {
-    $(add_to).resizable({
-      stop: function(e, ui) {
-
-        ratio = getRatio();
-
-        $('input[id=map_link_width]').val(Math.floor(ui.size.width / ratio));
-        $('input[id=map_link_height]').val(Math.floor(ui.size.height / ratio));
-      }
-    });
-    $(add_to).draggable({
-      stop: function(e, ui) {
-
-        ratio = getRatio();
-
-        //var parentOffset = $(this).parent().offset();
-        var unrelX = ui.position.left;//e.pageX - parentOffset.left;
-        var unrelY = ui.position.top;//e.pageY - parentOffset.top;
-        var relX = unrelX / ratio;
-        var relY = unrelY / ratio;
-        $('input[id=map_link_top]').val(Math.floor(relY));
-        $('input[id=map_link_left]').val(Math.floor(relX));
-      }
-    });
-  }
 });

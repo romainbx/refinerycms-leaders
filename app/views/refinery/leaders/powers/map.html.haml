@@ -3,12 +3,11 @@
   = render :partial => 'refinery/leaders/shared/power_menu'
   .directory-content{:rel=>@power.short_name, :style=>'border-color:'+@power.color}
     .right-content
-      %div#map
-        = image_fu @power.map.image
+      %div#map{:style => "background-image:url(#{@power.map.image.url});"}
+        -#= image_fu @power.map.image
     = render 'refinery/leaders/shared/footer'
 
 = javascript_tag do
   window.map_links = #{raw @map_links.to_json}
 
 = content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders')
-= content_for :javascripts, javascript_include_tag('refinery/leaders/leaders')

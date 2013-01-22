@@ -116,14 +116,17 @@ a.chzn-single {
 #map {
   position:relative;
   img {
-    width:100%;
-    height:100%;
+    z-index: -1;
   }
 }
+
+.link-on-map {
+  border:none;
+  z-index:900;
+}
 .link-on-map:hover {
-  background:green;
-  opacity:.4;
-  border-radius:5px;
+  background:url('transparent-green-pixel.png');
+  text-decoration:none;
 }
 .directory-menu-link {
   color:#333333!important;
