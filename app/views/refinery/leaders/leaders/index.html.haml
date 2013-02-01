@@ -5,10 +5,11 @@
         Répertoire des dirigeants
         %br
         de la République Populaire de Chine
-      %div{:style=>'line-height:15px;color:#666;margin-bottom:10px;'}
+      %div{:style=>'font-size:15px;line-height:15px;color:#666;margin-bottom:10px;'}
         Directory of governement leaders
-        %br
         of the People's Republic of China
+      %div{:style=>'font-size:15px;line-height:15px;color:#666;margin-bottom:30px;'}
+        中华人民共和国政府领导名录
   .directory-content
     %div{:style=>'width:770px;margin-left:auto;margin-right:auto;'}
       %div{:style=>'width:150px;float:left;margin-right:4px;'}
@@ -41,9 +42,9 @@
         %a.no_deco{:href =>'/leaders/powers/6'}
           .button_orga.cour
             %div
-              Cour populaire suprême
+              Cour Populaire Suprême
               %br
-              Parquet populaire suprême
+              Parquet Populaire Suprême
       %div{:style=>'width:150px;float:left;margin-right:4px;'}
         .repertoire_title
           Pouvoir exécutif
@@ -59,7 +60,7 @@
             %div
               Gouvernements
               %div{:style=>'font-size:16px'}
-                locaux
+                Locaux
       %div{:style=>'width:150px;float:left;margin-right:4px;'}
         .repertoire_title
           Diplomatie
@@ -69,7 +70,7 @@
               Représentations
               %div{:style=>'font-size:16px'}
                 Diplomatiques
-              chinoises et françaises
+              Chinoises et Françaises
   = render 'refinery/leaders/shared/footer'
 %div{:style=>'clear:both'}
 = content_for :stylesheets, stylesheet_link_tag('refinery/leaders/leaders')
