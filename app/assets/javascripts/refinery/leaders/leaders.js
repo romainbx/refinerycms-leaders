@@ -9,9 +9,9 @@ $(document).ready(function(){
   {
     var imgUrl = $('#map').css('background-image');
     imgUrl = imgUrl.substring(4, imgUrl.length-1);
-    //imgUrl = imgUrl.replace(/\"/g,'');
+    imgUrl = imgUrl.replace(/\"/g,'');
     var img = new Image();
-    img.src = "/system/images/BAhbBlsHOgZmSSIuMjAxMy8wMS8xNi8xNF8xOV8yOF85NDdfbWFwX2NoaW5hXzg5MC5wbmcGOgZFVA/map_china_890.png";
+    img.src = imgUrl;
     $("#map").css('width', img.width);
     $("#map").css('height', img.height);
   }
