@@ -200,6 +200,8 @@ $(document).ready(function(){
           $('#map > img').remove();
           $('#map').append('<img src="'+result+'">');
           img = $("#map img")[0];
+          $("#map").css('width', img.width);
+          $("#map").css('height', img.height);
           if (typeof static_map_links != 'undefined')
             putStaticMapLinks (static_map_links);
         });
